@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd"
+      no-conversation-view-id="/staffs/StaffsList.xhtml">
+
+
+	 <navigation from-action="#{staffsImportAction.importStaffs}">
+      <rule if-outcome="suc">
+         <redirect view-id="/staffs/ImportStaffs.xhtml">
+          <message severity="INFO">导入成功</message>
+         </redirect>
+      </rule>
+      <rule if-outcome="error">
+         <redirect view-id="/staffs/ImportStaffs.xhtml">
+          <message severity="INFO">导入失败</message>
+         </redirect>
+      </rule>
+   </navigation>
+ <restrict>#{s:hasRole('admin')}</restrict>
+</page>

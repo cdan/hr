@@ -1,0 +1,18 @@
+<rich:toolBar
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:rich="http://richfaces.org/rich">
+    <rich:toolBarGroup >
+        <s:link id="menuHomeId" view="/home.xhtml" value="Home" propagation="none" target="_top"/>
+    </rich:toolBarGroup>
+
+    <!-- @newMenuItem@ -->
+    <rich:toolBarGroup location="right">
+        <h:outputText id="menuWelcomeId" value="欢迎您: #{credentials.username}" rendered="#{identity.loggedIn}"/>
+        <s:link id="menuLoginId" view="/login.xhtml" value="登录" rendered="#{not identity.loggedIn}" propagation="none" target="_top"/>
+        <s:link id="menuLogoutId" view="/home.xhtml" action="#{identity.logout}" value="注销" rendered="#{identity.loggedIn}" propagation="none" target="_top"/>
+    </rich:toolBarGroup>
+</rich:toolBar>

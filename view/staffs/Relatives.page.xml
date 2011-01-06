@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
+
+	<param name="relativeId" value="#{relativesAction.relativeId}" />
+	<action execute="#{relativesAction.editRelativesInit}" />
+	
+	 <navigation from-action="#{relativesAction.addRelative}">
+      <rule  if-outcome="add">
+         <redirect view-id="/staffs/Relatives.xhtml">
+          <message severity="INFO">添加直系亲属成功</message>
+         </redirect>
+      </rule>
+         <rule if-outcome="modify">
+         <redirect view-id="/staffs/Relatives.xhtml">
+          <message severity="INFO">修改直系亲属成功</message>
+         </redirect>
+      </rule>
+   </navigation>
+   
+   
+	 <navigation from-action="#{relativesAction.revomeRelative}">
+      <rule>
+         <redirect view-id="/staffs/Relatives.xhtml">
+          <message severity="INFO">删除直系亲属成功</message>
+         </redirect>
+      </rule>
+   </navigation>
+</page>

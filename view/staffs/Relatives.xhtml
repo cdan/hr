@@ -1,0 +1,135 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="staffsFrom" styleClass="edit">
+			<rich:panel>
+				<f:facet name="header">直系亲属</f:facet>
+				<table class="form">
+					<tr>
+						<td><s:decorate id="nameField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<h:inputText id="name" required="true" size="40"
+								maxlength="100" value="#{relativesAction.relative.name}">
+								<a:support event="onblur" reRender="nameField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						
+						<td><s:decorate id="relativeField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">与其关系</ui:define>
+							<h:inputText id="relative" required="true" size="40"
+								maxlength="100" value="#{relativesAction.relative.relative}">
+								<a:support event="onblur" reRender="relativeField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="birthdateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">出身日期</ui:define>
+							<rich:calendar id="birthdate" required="true"
+								value="#{relativesAction.relative.birthdate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+						
+						<td><s:decorate id="workUnitField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">工作单位</ui:define>
+							<h:inputText id="workUnit" required="true" size="40"
+								maxlength="100" value="#{relativesAction.relative.workUnit}">
+								<a:support event="onblur" reRender="workUnitField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="telField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">联系电话</ui:define>
+							<h:inputText id="tel" required="true" size="40"
+								maxlength="100" value="#{relativesAction.relative.tel}">
+								<a:support event="onblur" reRender="telField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						
+						<td></td>
+					</tr>
+
+				</table>
+			</rich:panel>
+
+			<div class="actionButtons"><h:commandButton id="save"
+				value="保存" action="#{relativesAction.addRelative}" /> <h:commandButton
+				id="new" value="新建" action="#{relativesAction.newRelative}" rendered="#{relativesAction.relativeId!=null}"/> 
+				<h:commandButton
+				id="remove" value="删除" action="#{relativesAction.revomeRelative}" rendered="#{relativesAction.relativeId!=null}"/>
+				<s:button
+				view="/staffs/WorkExperience.xhtml" value="返回"></s:button>
+				<s:button
+				view="/staffs/StaffsList.xhtml" value="结束"></s:button>
+				</div>
+
+		</h:form>
+
+		<rich:panel>
+			<f:facet name="header">直系亲属</f:facet>
+			<div class="results" id="eduExperienceList"><rich:dataTable
+				id="eduExperienceList" var="_relative"
+				value="#{relativesAction.relatives}">
+				<h:column>
+					<f:facet name="header">
+						姓名
+					</f:facet>
+					<h:outputText value="#{_relative.name}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					与其关系
+					</f:facet>
+					<h:outputText value="#{_relative.relative}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						出生日期
+					</f:facet>
+					<h:outputText value="#{_relative.birthdate}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						工作单位
+					</f:facet>
+					<h:outputText value="#{_relative.workUnit}">
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						联系电话
+					</f:facet>
+					<h:outputText value="#{_relative.tel}">
+					</h:outputText>
+				</h:column>
+				<rich:column styleClass="action">
+					<f:facet name="header">操作</f:facet>
+					<s:link view="/staffs/Relatives.xhtml" value="编辑"  id="_relativeEdit" rendered="#{empty from}">
+						<f:param name="relativeId" value="#{_relative.id}" />
+					</s:link>
+				</rich:column>
+			</rich:dataTable></div>
+		</rich:panel>
+		
+	</ui:define>
+
+</ui:composition>

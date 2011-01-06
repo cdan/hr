@@ -1,0 +1,136 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="staffsFrom" styleClass="edit">
+			<rich:panel>
+				<f:facet name="header">教育经历维护</f:facet>
+				<table class="form">
+					<tr>
+						<td><s:decorate id="startDateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">开始时间</ui:define>
+							<rich:calendar locale="zh_CN" id="startDate" required="true"
+								value="#{eduExperienceAction.eduExperience.startDate}"
+								datePattern="yyyy-MM-dd">
+								<a:support event="onblur" reRender="startDateField"
+									bypassUpdates="true" ajaxSingle="true" />
+								</rich:calendar>
+						</s:decorate></td>
+						<td><s:decorate id="endDateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">结束时间</ui:define>
+							<rich:calendar locale="zh_CN" id="endDate" required="true"
+								value="#{eduExperienceAction.eduExperience.endDate}"
+								datePattern="yyyy-MM-dd" >
+								<a:support event="onblur" reRender="endDateField"
+									bypassUpdates="true" ajaxSingle="true" />
+								</rich:calendar>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="schoolField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">学校</ui:define>
+							<h:inputText id="school" required="true" size="40"
+								maxlength="100" value="#{eduExperienceAction.eduExperience.school}">
+								<a:support event="onblur" reRender="schoolField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+
+						<td><s:decorate id="specialtyField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">专业</ui:define>
+							<h:inputText id="specialty" required="true" size="40"
+								maxlength="100" value="#{eduExperienceAction.eduExperience.specialty}">
+								<a:support event="onblur" reRender="specialtyField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="educationBackgroundField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">学历</ui:define>
+							<h:selectOneMenu id="educationBackgroundField"
+								value="#{eduExperienceAction.eduExperience.educationBackground}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.eduBgMata}"></f:selectItems>
+								<a:support event="onblur" reRender="educationBackgroundField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+						<td></td>
+					</tr>
+				</table>
+			</rich:panel>
+
+			<div class="actionButtons"><h:commandButton id="save"
+				value="保存" action="#{eduExperienceAction.addEduExperience}" /> <h:commandButton
+				id="new" value="新建" action="#{eduExperienceAction.newEduExperience}" rendered="#{eduExperienceAction.eduExperienceId!=null}"/> 
+				<h:commandButton
+				id="remove" value="删除" action="#{eduExperienceAction.revomeEduExperience}" rendered="#{eduExperienceAction.eduExperienceId!=null}"/>
+				<s:button
+				view="/staffs/StaffsEdit.xhtml" value="返回"></s:button></div>
+
+		</h:form>
+
+		<rich:panel>
+			<f:facet name="header">教育经历</f:facet>
+			<div class="results" id="eduExperienceList"><rich:dataTable
+				id="eduExperienceList" var="_eduExperience"
+				value="#{eduExperienceAction.eduExperiences}">
+				<h:column>
+					<f:facet name="header">
+						起始时间
+					</f:facet>
+					<h:outputText value="#{_eduExperience.endDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+					</h:outputText>${'---'}
+					<h:outputText value="#{_eduExperience.startDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					学校
+					</f:facet>
+					<h:outputText value="#{_eduExperience.school}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						专业
+					</f:facet>
+					<h:outputText value="#{_eduExperience.specialty}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						学历
+					</f:facet>
+					<h:outputText value="#{_eduExperience.educationBackground}">
+					</h:outputText>
+				</h:column>
+				<rich:column styleClass="action">
+					<f:facet name="header">操作</f:facet>
+					<s:link view="/staffs/EduExperiences.xhtml" value="编辑"  id="eduExperienceEdit" rendered="#{empty from}">
+						<f:param name="eduExperienceId" value="#{_eduExperience.id}" />
+					</s:link>
+				</rich:column>
+			</rich:dataTable></div>
+		</rich:panel>
+		
+		<div class="actionButtons">
+				 <s:button view="/staffs/WorkExperience.xhtml" value="添加工作经历"></s:button></div>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,35 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="applications" styleClass="edit" enctype="multipart/form-data">
+			<rich:panel>
+				<f:facet name="header">导入人员信息</f:facet>
+				<table class="form">
+					<tr>
+						<td><s:decorate id="nameField" template="../layout/edit.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<s:fileUpload required="true" data="#{staffsImportAction.uploadFileStream}" fileName="#{staffsImportAction.uploadFileName}"></s:fileUpload>
+						</s:decorate></td>
+					</tr>
+				</table>
+				<div style="clear: both"></div>
+			</rich:panel>
+
+			<div class="actionButtons"><h:commandButton id="save"
+				value="导入" action="#{staffsImportAction.importStaffs}"/>
+				
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

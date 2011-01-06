@@ -1,0 +1,363 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="staffsFrom" styleClass="edit">
+			<rich:panel>
+				<f:facet name="header">人员维护</f:facet>
+				<table class="form">
+					<tr>
+						<td>
+						<s:decorate id="nameField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<h:inputText id="name" required="true" size="30"
+								value="#{staffsHome.staff.name}">
+								<a:support event="onblur" reRender="nameField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
+						</td>
+						
+						<td><s:decorate id="genderField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">性别</ui:define>
+							<h:selectOneMenu id="gender" value="#{staffsHome.staff.gender}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.genderMeta}"></f:selectItems>
+								<a:support event="onblur" reRender="genderField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate>
+						</td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="birthdateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">出身日期</ui:define>
+							<rich:calendar locale="zh_CN" id="birthdate" required="true"
+								value="#{staffsHome.staff.birthdate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+						<td><s:decorate id="nativePlaceField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">籍 贯</ui:define>
+							<h:inputText id="nativePlace" required="true" size="30"
+								maxlength="100" value="#{staffsHome.staff.nativePlace}">
+								<a:support event="onblur" reRender="nativePlaceField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="nationField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">民族</ui:define>
+							<h:selectOneMenu id="nation" value="#{staffsHome.staff.nation}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.nationMeta}"></f:selectItems>
+								<a:support event="onblur" reRender="nationField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+						<td><s:decorate id="maritalStatusField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">婚 姻 状 况</ui:define>
+							<h:selectOneMenu id="maritalStatus" value="#{staffsHome.staff.maritalStatus}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.maritalMata}"></f:selectItems>
+								<a:support event="onblur" reRender="maritalStatusField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="politicsStatusField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">政 治 面 貌</ui:define>
+							<h:selectOneMenu id="politicsStatus" value="#{staffsHome.staff.politicsStatus}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.politicsMeta}"></f:selectItems>
+								<a:support event="onblur" reRender="politicsStatusField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+						<td><s:decorate id="partyDateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">入党时间</ui:define>
+							<rich:calendar locale="zh_CN" id="partyDate" required="true"
+								value="#{staffsHome.staff.partyDate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="workDateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">参 加 工 作时  间</ui:define>
+							<rich:calendar locale="zh_CN" id="workDate" required="true"
+								value="#{staffsHome.staff.workDate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+						<td><s:decorate id="educationBackgroundField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">学历</ui:define>
+							<h:selectOneMenu id="educationBackground" value="#{staffsHome.staff.educationBackground}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.eduBgMata}"></f:selectItems>
+								<a:support event="onblur" reRender="educationBackgroundField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="degreeField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">学位</ui:define>
+							<h:selectOneMenu id="degree" value="#{staffsHome.staff.degree}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.degreeMata}"></f:selectItems>
+								<a:support event="onblur" reRender="degreeField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+						<td><s:decorate id="graduateSchoolField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">毕 业 院 校</ui:define>
+							<h:inputText id="graduateSchool" required="true" size="30"
+								maxlength="100" value="#{staffsHome.staff.graduateSchool}">
+								<a:support event="onblur" reRender="graduateSchoolField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="professionalTitleField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">职 称</ui:define>
+							<h:inputText id="professionalTitle" required="true" size="30"
+								maxlength="100" value="#{staffsHome.staff.professionalTitle}">
+								<a:support event="onblur" reRender="professionalTitleField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="professionalTitleDateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">职称取得时间</ui:define>
+							<rich:calendar locale="zh_CN" id="professionalTitleDate" required="true"
+								value="#{staffsHome.staff.professionalTitleDate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="specialtyField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">专 业</ui:define>
+							<h:inputText id="specialty" required="true" size="30"
+								maxlength="100" value="#{staffsHome.staff.specialty}">
+								<a:support event="onblur" reRender="specialtyField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="identityNoField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">身份证号</ui:define>
+							<h:inputText id="identityNo" required="true" size="30"
+								maxlength="100" value="#{staffsHome.staff.identityNo}">
+								<a:support event="onblur" reRender="identityNoField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="telField" template="../layout/edit.xhtml">
+							<ui:define name="label">住 宅 电 话</ui:define>
+							<h:inputText id="tel" required="true" size="30" maxlength="100"
+								value="#{staffsHome.staff.tel}">
+								<a:support event="onblur" reRender="telField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="mobileField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">手 机</ui:define>
+							<h:inputText id="mobile" required="true" size="30"
+								maxlength="100" value="#{staffsHome.staff.mobile}">
+								<a:support event="onblur" reRender="mobileField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="emailField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">E-MAIL</ui:define>
+							<h:inputText id="email" required="true" size="30" maxlength="100"
+								value="#{staffsHome.staff.email}">
+								<a:support event="onblur" reRender="emailField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="drivingLicenseLevelField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">驾照类别</ui:define>
+							<h:selectOneMenu id="drivingLicenseLevel" value="#{staffsHome.staff.drivingLicenseLevel}"
+								required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.drivingmeta}"></f:selectItems>
+								<a:support event="onblur" reRender="drivingLicenseLevelField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="homeAddressField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">家 庭 住 址</ui:define>
+							<h:inputText id="homeAddress" required="true" size="50"
+								maxlength="100" value="#{staffsHome.staff.homeAddress}">
+								<a:support event="onblur" reRender="homeAddressField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="nativeAddressField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">户 籍所在地</ui:define>
+							<h:inputText id="nativeAddress" required="true" size="50"
+								maxlength="100" value="#{staffsHome.staff.nativeAddress}">
+								<a:support event="onblur" reRender="nativeAddressField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="startDate"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">入职时间</ui:define>
+							<rich:calendar locale="zh_CN" id="startDate" required="true"
+								value="#{staffsHome.staff.startDate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+						<td><s:decorate id="othersField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">其他信息</ui:define>
+							<h:inputText id="othersField" size="30"
+								maxlength="100" value="#{staffsHome.staff.others}">
+								<a:support event="onblur" reRender="othersField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+				</table>
+				<div style="clear: both"></div>
+			</rich:panel>
+			
+					<rich:panel>
+				<f:facet name="header">配偶维护</f:facet>
+				<table class="form">
+					<tr>
+						<td><s:decorate id="spouseNameField" template="../layout/edit.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<h:inputText id="name" size="40" maxlength="100"
+								value="#{staffsHome.staff.spouseName}">
+								<a:support event="onblur" reRender="spouseNameField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="spousebirthdateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">出身日期</ui:define>
+							<rich:calendar locale="zh_CN" id="birthdate"
+								value="#{staffsHome.staff.spouseBirthdate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="spousepoliticsStatusField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">政 治 面 貌</ui:define>
+							<h:selectOneMenu id="spousepoliticsStatus"
+								value="#{staffsHome.staff.spousePoliticsStatus}" >
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.politicsMeta}"></f:selectItems>
+								<a:support event="onblur" reRender="spousepoliticsStatusField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+						<td><s:decorate id="spousenativePlaceField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">籍 贯</ui:define>
+							<h:inputText id="nativePlace" size="40"
+								maxlength="100" value="#{staffsHome.staff.spouseNativePlace}">
+								<a:support event="onblur" reRender="spousenativePlaceField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="workNameField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">职务</ui:define>
+							<h:inputText id="workName" size="40"
+								maxlength="100" value="#{staffsHome.staff.spouseWorkName}">
+								<a:support event="onblur" reRender="workNameField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="spousetelField" template="../layout/edit.xhtml">
+							<ui:define name="label">联系电话</ui:define>
+							<h:inputText id="tel" size="40" maxlength="100"
+								value="#{staffsHome.staff.spouseTel}">
+								<a:support event="onblur" reRender="spousetelField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="workUnitField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">工作单位</ui:define>
+							<h:inputText id="workUnit" size="40"
+								maxlength="100" value="#{staffsHome.staff.spouseWorkUnit}">
+								<a:support event="onblur" reRender="workUnitField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td></td>
+					</tr>
+
+				</table>
+				<div style="clear: both"></div>
+			</rich:panel>
+			
+
+			<div class="actionButtons"><h:commandButton id="save"
+				value="保存" action="#{staffsHome.persist}" />
+				<h:commandButton id="saveAndNext"
+				value="保存并下一步" action="#{staffsHome.persistAndNext}" />
+				 <s:button view="/staffs/StaffsList.xhtml" propagation="end" value="返回"></s:button></div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

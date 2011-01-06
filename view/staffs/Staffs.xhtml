@@ -1,0 +1,362 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+			<rich:panel>
+				<f:facet name="header">基本信息</f:facet>
+				<table class="form">
+					<tr>
+						<td>
+						<s:decorate id="nameField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<h:outputText id="name" value="#{staffsHome.staff.name}"/>
+						</s:decorate>
+						</td>
+						
+						<td><s:decorate id="genderField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">性别</ui:define>
+							<h:outputText id="gender" value="#{staffsHome.staff.gender}"/>
+						</s:decorate>
+						</td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="birthdateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">出身日期</ui:define>
+							<h:outputText id="birthdate" value="#{staffsHome.staff.birthdate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+						<td><s:decorate id="nativePlaceField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">籍 贯</ui:define>
+								<h:outputText id="nativePlace" value="#{staffsHome.staff.nativePlace}"/>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="nationField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">民族</ui:define>
+								<h:outputText id="nation" value="#{staffsHome.staff.nation}"/>
+						</s:decorate></td>
+						<td><s:decorate id="maritalStatusField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">婚 姻 状 况</ui:define>
+							<h:outputText id="maritalStatus" value="#{staffsHome.staff.maritalStatus}"/>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="politicsStatusField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">政 治 面 貌</ui:define>
+							<h:outputText id="politicsStatus" value="#{staffsHome.staff.politicsStatus}"/>
+						</s:decorate></td>
+						<td><s:decorate id="partyDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">入党时间</ui:define>
+							<h:outputText id="partyDate" value="#{staffsHome.staff.partyDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="workDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">参 加 工 作时  间</ui:define>
+							<h:outputText id="workDate" value="#{staffsHome.staff.workDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+						<td><s:decorate id="educationBackgroundField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">学历</ui:define>
+							<h:outputText id="educationBackground" value="#{staffsHome.staff.educationBackground}"/>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="degreeField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">学位</ui:define>
+							<h:outputText id="degree" value="#{staffsHome.staff.degree}"/>
+						</s:decorate></td>
+						<td><s:decorate id="graduateSchoolField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">毕 业 院 校</ui:define>
+							<h:outputText id="graduateSchool" value="#{staffsHome.staff.graduateSchool}"/>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="professionalTitleField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">职 称</ui:define>
+							<h:outputText id="professionalTitle" value="#{staffsHome.staff.professionalTitle}"/>
+						</s:decorate></td>
+						<td><s:decorate id="professionalTitleDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">职称取得时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.professionalTitleDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="specialtyField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">专 业</ui:define>
+							<h:outputText id="specialty" value="#{staffsHome.staff.specialty}"/>
+						</s:decorate></td>
+						<td><s:decorate id="identityNoField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">身份证号</ui:define>
+							<h:outputText id="identityNo" value="#{staffsHome.staff.identityNo}"/>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="telField" template="../layout/display.xhtml">
+							<ui:define name="label">住 宅 电 话</ui:define>
+							<h:outputText id="tel" value="#{staffsHome.staff.tel}"/>
+						</s:decorate></td>
+						<td><s:decorate id="mobileField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">手 机</ui:define>
+							<h:outputText id="mobile" value="#{staffsHome.staff.mobile}"/>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="emailField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">E-MAIL</ui:define>
+							<h:outputText id="email" value="#{staffsHome.staff.email}"/>
+						</s:decorate></td>
+						<td><s:decorate id="drivingLicenseLevelField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">驾照类别</ui:define>
+							<h:outputText id="drivingLicenseLevel" value="#{staffsHome.staff.drivingLicenseLevel}"/>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="homeAddressField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">家 庭 住 址</ui:define>
+							<h:outputText id="homeAddress" value="#{staffsHome.staff.homeAddress}"/>
+						</s:decorate></td>
+						<td><s:decorate id="nativeAddressField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">户 籍所在地</ui:define>
+							<h:outputText id="nativeAddress" value="#{staffsHome.staff.nativeAddress}"/>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="startDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">入职时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.startDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+						<td><s:decorate id="othersField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">其他信息</ui:define>
+							<h:outputText id="others" value="#{staffsHome.staff.others}"/>
+						</s:decorate></td>
+					</tr>
+				</table>
+				<div style="clear: both"></div>
+			</rich:panel>
+			
+			<rich:panel>
+				<f:facet name="header">配偶信息</f:facet>
+				<table class="form">
+					<tr>
+						<td><s:decorate id="spouseNameField" template="../layout/display.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<h:outputText value="#{staffsHome.staff.spouseName}"/>
+						</s:decorate></td>
+						<td><s:decorate id="spousebirthdateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">出身日期</ui:define>
+							<h:outputText value="#{staffsHome.staff.spouseBirthdate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="spousepoliticsStatusField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">政 治 面 貌</ui:define>
+								<h:outputText value="#{staffsHome.staff.spousePoliticsStatus}"/>
+							
+						</s:decorate></td>
+						<td><s:decorate id="spousenativePlaceField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">籍 贯</ui:define>
+							<h:outputText value="#{staffsHome.staff.spouseNativePlace}"/>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="spouseworkNameField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">职务</ui:define>
+							<h:outputText value="#{staffsHome.staff.spouseWorkName}"/>
+						</s:decorate></td>
+						<td><s:decorate id="spousetelField" template="../layout/display.xhtml">
+							<ui:define name="label">联系电话</ui:define>
+							<h:outputText value="#{staffsHome.staff.spouseTel}"/>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="spouseworkUnitField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">工作单位</ui:define>
+							<h:outputText value="#{staffsHome.staff.spouseWorkUnit}"/>
+						</s:decorate></td>
+						<td></td>
+					</tr>
+
+				</table>
+				<div style="clear: both"></div>
+			</rich:panel>
+			
+			<rich:panel>
+			<f:facet name="header">教育经历</f:facet>
+			<div class="results" id="eduExperienceList"><rich:dataTable
+				id="eduExperienceList" var="_eduExperience"
+				value="#{staffsHome.eduExperiences}">
+				<h:column>
+					<f:facet name="header">
+						起始时间
+					</f:facet>
+					<h:outputText value="#{_eduExperience.endDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+					</h:outputText>${'---'}
+					<h:outputText value="#{_eduExperience.startDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					学校
+					</f:facet>
+					<h:outputText value="#{_eduExperience.school}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						专业
+					</f:facet>
+					<h:outputText value="#{_eduExperience.specialty}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						学历
+					</f:facet>
+					<h:outputText value="#{_eduExperience.educationBackground}">
+					</h:outputText>
+				</h:column>
+			</rich:dataTable></div>
+		</rich:panel>
+		
+		<rich:panel>
+			<f:facet name="header">工作经历</f:facet>
+			<div class="results" id="eduExperienceList"><rich:dataTable
+				id="wList" var="_workExperience"
+				value="#{staffsHome.workExperiences}">
+				<h:column>
+					<f:facet name="header">
+						起始时间
+					</f:facet>
+					<h:outputText value="#{_workExperience.endDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+					</h:outputText>${'---'}
+					<h:outputText value="#{_workExperience.startDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					工作单位
+					</f:facet>
+					<h:outputText value="#{_workExperience.workUnit}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						部门
+					</f:facet>
+					<h:outputText value="#{_workExperience.department}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						职务
+					</f:facet>
+					<h:outputText value="#{_workExperience.workName}">
+					</h:outputText>
+				</h:column>
+			</rich:dataTable></div>
+		</rich:panel>
+		
+		
+		<rich:panel>
+			<f:facet name="header">直系亲属</f:facet>
+			<div class="results" id="eduExperienceList"><rich:dataTable
+				id="rList" var="_relative"
+				value="#{staffsHome.relatives}">
+				<h:column>
+					<f:facet name="header">
+						姓名
+					</f:facet>
+					<h:outputText value="#{_relative.name}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+					与其关系
+					</f:facet>
+					<h:outputText value="#{_relative.relative}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						出生日期
+					</f:facet>
+					<h:outputText value="#{_relative.birthdate}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						工作单位
+					</f:facet>
+					<h:outputText value="#{_relative.workUnit}">
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						联系电话
+					</f:facet>
+					<h:outputText value="#{_relative.tel}">
+					</h:outputText>
+				</h:column>
+			</rich:dataTable></div>
+		</rich:panel>
+			<div class="actionButtons">
+				 <s:button view="/staffs/StaffsList.xhtml"  value="返回"></s:button>
+				 
+				 <s:button action="#{staffsHome.export}" value="导出">
+				    <f:param name="staffsId" value="#{staffsHome.staffsId}"/>
+				 </s:button>
+				 </div>
+				 
+	</ui:define>
+</ui:composition>

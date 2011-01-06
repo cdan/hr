@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.com/products/seam/taglib" contentType="text/html">
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>xcaib</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="js/ext/extjs-2.0.2/resources/css/ext-all.css"></link>
+	<link rel="stylesheet" type="text/css"
+		href="js/extux-0.0.2/ext-patch.css" />
+	<link rel="stylesheet" type="text/css" href="js/extux-0.0.2/ux.css" />
+	<script type="text/javascript" src="js/ext/extjs-2.0.2/ext-base.js"><!--ext--></script>
+	<script type="text/javascript" src="js/ext/extjs-2.0.2/ext-all.js"><!-- ext --></script>
+	<script src="js/ext/extjs-2.0.2/ext-lang-zh_CN.js" type="text/javascript"><!-- ext --></script>
+	<script type="text/javascript" src="js/Workbench.js"><!-- ext --></script>
+	  <script type="text/javascript">
+	  <!--
+		      Ext.BLANK_IMAGE_URL = 'js/ext/extjs-2.0.2/resources/images/default/s.gif';
+		      var treeJson = #{menuAction.treeMenus};
+		      Ext.onReady(function() {
+		    	    Ext.QuickTips.init();
+		    	    workbench  = new Ext.ux.Workbench();
+		    	    workbench.init();
+		    	    var mainAccordion = workbench.getMainAccordion();
+		    	    for(var rootIndex = 0 ;rootIndex < treeJson.length;rootIndex++){
+		    	    	 var tree = new Ext.tree.TreePanel({
+		    	                title: treeJson[rootIndex].text,
+		    	                iconCls: "user",
+		    	                rootVisible: false,
+		    	                loader: new Ext.tree.TreeLoader(),
+		    	                root: new Ext.tree.AsyncTreeNode({
+		    	                    text:'功能菜单',
+		    	                    children: treeJson[rootIndex].children
+		    	                })
+		    	            });
+		    	    	    tree.on('click', function(node) {
+		    	    	    	workbench.openTab(node.id,node.text,node.attributes.url);
+		    	            }, workbench);
+		    	            mainAccordion.add(tree);
+			    	}
+		    	    mainAccordion.doLayout();
+		      });
+		      -->
+	 </script>
+	</head>
+	<body>
+	  <div class="body"></div>
+	</body>
+	</html>
+</f:view>

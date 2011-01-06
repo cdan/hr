@@ -1,0 +1,104 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="staffsFrom" styleClass="edit">
+			<rich:panel>
+				<f:facet name="header">配偶维护</f:facet>
+				<table class="form">
+					<tr>
+						<td><s:decorate id="nameField" template="../layout/edit.xhtml">
+							<ui:define name="label">姓名</ui:define>
+							<h:inputText id="name" required="true" size="40" maxlength="100"
+								value="#{spouseAction.spouse.name}">
+								<a:support event="onblur" reRender="nameField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="birthdateField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">出身日期</ui:define>
+							<rich:calendar id="birthdate" required="true"
+								value="#{spouseAction.spouse.birthdate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="politicsStatusField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">政 治 面 貌</ui:define>
+							<h:selectOneMenu id="politicsStatus"
+								value="#{spouseAction.spouse.politicsStatus}" required="true">
+								<f:selectItem itemLabel="选择" itemValue="" />
+								<f:selectItems value="#{meta.politicsMeta}"></f:selectItems>
+								<a:support event="onblur" reRender="politicsStatusField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate></td>
+						<td><s:decorate id="nativePlaceField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">籍 贯</ui:define>
+							<h:inputText id="nativePlace" required="true" size="40"
+								maxlength="100" value="#{spouseAction.spouse.nativePlace}">
+								<a:support event="onblur" reRender="nativePlaceField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+					<tr>
+						<td><s:decorate id="workNameField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">职务</ui:define>
+							<h:inputText id="workName" required="true" size="40"
+								maxlength="100" value="#{spouseAction.spouse.workName}">
+								<a:support event="onblur" reRender="workNameField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="telField" template="../layout/edit.xhtml">
+							<ui:define name="label">联系电话</ui:define>
+							<h:inputText id="tel" required="true" size="40" maxlength="100"
+								value="#{spouseAction.spouse.tel}">
+								<a:support event="onblur" reRender="telField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
+					<tr>
+						<td><s:decorate id="workUnitField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">工作单位</ui:define>
+							<h:inputText id="workUnit" required="true" size="40"
+								maxlength="100" value="#{spouseAction.spouse.workUnit}">
+								<a:support event="onblur" reRender="workUnitField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td></td>
+					</tr>
+
+				</table>
+				<div style="clear: both"></div>
+			</rich:panel>
+
+			<div class="actionButtons"><h:commandButton id="save"
+				value="保存" action="#{spouseAction.persist}"/>
+				 <s:button view="/staffs/EduExperiences.xhtml" value="添加教育经历"></s:button>
+				<s:button
+				view="/staffs/StaffsEdit.xhtml" value="返回"></s:button>
+				
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
+ <param name="firstResult" value="#{staffsList.firstResult}"/>
+ <param name="sort" value="#{staffsList.orderColumn}"/>
+ <param name="dir" value="#{staffsList.orderDirection}"/>
+ <param name="logic" value="#{staffsList.restrictionLogicOperator}"/>
+ <param name="from"/>
+ <param name="degree" value="#{staffsList.staffs.degree}"/>
+ <param name="drivingLicenseLevel" value="#{staffsList.staffs.drivingLicenseLevel}"/>
+ <param name="educationBackground" value="#{staffsList.staffs.educationBackground}"/>
+ <param name="email" value="#{staffsList.staffs.email}"/>
+ <param name="gender" value="#{staffsList.staffs.gender}"/>
+ <param name="graduateSchool" value="#{staffsList.staffs.graduateSchool}"/>
+ <param name="homeAddress" value="#{staffsList.staffs.homeAddress}"/>
+ <param name="identityNo" value="#{staffsList.staffs.identityNo}"/>
+ <param name="maritalStatus" value="#{staffsList.staffs.maritalStatus}"/>
+ <param name="mobile" value="#{staffsList.staffs.mobile}"/>
+ <param name="name" value="#{staffsList.staffs.name}"/>
+ <param name="nation" value="#{staffsList.staffs.nation}"/>
+ <param name="nativeAddress" value="#{staffsList.staffs.nativeAddress}"/>
+ <param name="nativePlace" value="#{staffsList.staffs.nativePlace}"/>
+ <param name="politicsStatus" value="#{staffsList.staffs.politicsStatus}"/>
+ <param name="professionalTitle" value="#{staffsList.staffs.professionalTitle}"/>
+ <param name="specialty" value="#{staffsList.staffs.specialty}"/>
+ <param name="tel" value="#{staffsList.staffs.tel}"/>
+ <param name="birthdayFrom" value="#{staffsList.birthdateFrom}" converterId="org.jboss.seam.ui.DateTimeConverter"/>
+ <param name="birthdayTo" value="#{staffsList.birthdateTo}" converterId="org.jboss.seam.ui.DateTimeConverter"/>
+</page>
