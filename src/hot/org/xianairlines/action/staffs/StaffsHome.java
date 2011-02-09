@@ -1,16 +1,13 @@
 package org.xianairlines.action.staffs;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import net.sf.jxls.transformer.XLSTransformer;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Name;
+import org.jboss.seam.annotations.Out;
+import org.jboss.seam.annotations.Scope;
+import org.xianairlines.model.*;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -18,20 +15,13 @@ import javax.persistence.EntityManager;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.jxls.transformer.XLSTransformer;
-
-import org.apache.poi.ss.usermodel.Workbook;
-import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Out;
-import org.jboss.seam.annotations.Scope;
-import org.xianairlines.model.EduExperience;
-import org.xianairlines.model.Relatives;
-import org.xianairlines.model.Spouse;
-import org.xianairlines.model.Staffs;
-import org.xianairlines.model.WorkExperience;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Name("staffsHome")
 @Scope(ScopeType.CONVERSATION)
@@ -150,6 +140,8 @@ public class StaffsHome {
 		final HttpServletResponse response = (HttpServletResponse) extCtx
 				.getResponse();
 		response.setContentType("application/x-download");
+        //response.setContentType("application/msexcel");
+
 		final String newFileName = encodeFileName(this.staff.getName()+".xls");
 		response.addHeader("Content-disposition", "attachment;filename="
 				+ newFileName + ";charset=UTF-8");
@@ -158,9 +150,9 @@ public class StaffsHome {
 		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 	     beans.put("dateFormat", dateFormat);
 		 beans.put("staff", this.staff);
-		 beans.put("spouse", this.getSpouse());
-		 beans.put("workMap", this.workMap());
-		 beans.put("eduMap", this.eduMap());
+		 //beans.put("spouse", this.getSpouse());
+		 beans.put("workMap", this.getWorkExperiences());
+		 beans.put("eduMap", this.getEduExperiences());
 		 beans.put("rl", this.getRelatives());
 		InputStream in = null;
 		Workbook workBook = null;

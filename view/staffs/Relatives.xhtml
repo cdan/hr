@@ -28,7 +28,7 @@
 						<td><s:decorate id="relativeField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">与其关系</ui:define>
-							<h:inputText id="relative" required="true" size="40"
+							<h:inputText id="relative" size="40"
 								maxlength="100" value="#{relativesAction.relative.relative}">
 								<a:support event="onblur" reRender="relativeField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -38,8 +38,8 @@
 					<tr>
 						<td><s:decorate id="birthdateField"
 							template="../layout/edit.xhtml">
-							<ui:define name="label">出身日期</ui:define>
-							<rich:calendar id="birthdate" required="true"
+							<ui:define name="label">出生日期</ui:define>
+							<rich:calendar id="birthdate"
 								value="#{relativesAction.relative.birthdate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
@@ -47,7 +47,7 @@
 						<td><s:decorate id="workUnitField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">工作单位</ui:define>
-							<h:inputText id="workUnit" required="true" size="40"
+							<h:inputText id="workUnit" size="40"
 								maxlength="100" value="#{relativesAction.relative.workUnit}">
 								<a:support event="onblur" reRender="workUnitField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -58,7 +58,7 @@
 						<td><s:decorate id="telField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">联系电话</ui:define>
-							<h:inputText id="tel" required="true" size="40"
+							<h:inputText id="tel"  size="40"
 								maxlength="100" value="#{relativesAction.relative.tel}">
 								<a:support event="onblur" reRender="telField"
 									bypassUpdates="true" ajaxSingle="true" />

@@ -28,7 +28,7 @@
 					<tr>
 						<td><s:decorate id="birthdateToField"
 							template="../layout/display.xhtml">
-							<ui:define name="label">出身日期早于</ui:define>
+							<ui:define name="label">出生日期早于</ui:define>
 							<rich:calendar locale="zh_CN" id="birthdateTo"
 								value="#{staffsList.birthdateTo}"
 								datePattern="yyyy-MM-dd" />
@@ -36,7 +36,7 @@
 						
 						<td><s:decorate id="birthdateFromField"
 							template="../layout/display.xhtml">
-							<ui:define name="label">出身日期晚于</ui:define>
+							<ui:define name="label">出生日期晚于</ui:define>
 							<rich:calendar locale="zh_CN"  id="birthdateFrom"
 								value="#{staffsList.birthdateFrom}"
 								datePattern="yyyy-MM-dd" />
@@ -94,7 +94,7 @@
 					<f:facet name="header">
 						<ui:include src="../layout/sort.xhtml">
 							<ui:param name="entityList" value="#{staffsList}" />
-							<ui:param name="propertyLabel" value="出身日期" />
+							<ui:param name="propertyLabel" value="出生日期" />
 							<ui:param name="propertyPath" value="staffs.birthdate" />
 						</ui:include>
 					</f:facet>
@@ -176,8 +176,8 @@
 				value="导出">
 			</s:button>
 
-			<input type="button" value="选择导出"
-				onclick="Richfaces.showModalPanel('selectColumns');" />
+			<!--input type="button" value="选择导出"
+				onclick="Richfaces.showModalPanel('selectColumns');" /-->
 		</s:div>
 
 		<rich:modalPanel id="selectColumns" width="400" height="420">

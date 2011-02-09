@@ -1,24 +1,8 @@
 package org.xianairlines.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.*;
 
 @Entity
 @Table(name = "staffs")
@@ -34,99 +18,103 @@ public class Staffs implements Serializable {
 	@Column(name = "staffs_name", length = 100, nullable = false)
 	private String name;
 
-	@Column(name = "staffs_gender", length = 100, nullable = false)
+	@Column(name = "staffs_gender", length = 100)
 	private String gender;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "staffs_birthdate", nullable = false)
+	@Column(name = "staffs_birthdate")
 	private Date birthdate;
 
-	@Column(name = "staffs_nativePlace", length = 100, nullable = false)
+	@Column(name = "staffs_nativePlace", length = 100)
 	private String nativePlace;
 
-	@Column(name = "staffs_nation", length = 100, nullable = false)
+	@Column(name = "staffs_nation", length = 100)
 	private String nation;
 
-	@Column(name = "staffs_maritalStatus", length = 100, nullable = false)
+	@Column(name = "staffs_maritalStatus", length = 100)
 	private String maritalStatus;
 
-	@Column(name = "staffs_politicsStatus", length = 100, nullable = false)
+	@Column(name = "staffs_politicsStatus", length = 100)
 	private String politicsStatus;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "staffs_party_date", nullable = false)
+	@Column(name = "staffs_party_date")
 	private Date partyDate;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "staffs_work_date", nullable = false)
+	@Column(name = "staffs_work_date" )
 	private Date workDate;
 
-	@Column(name = "staffs_education_background", length = 100, nullable = false)
+	@Column(name = "staffs_education_background", length = 100 )
 	private String educationBackground;
 
-	@Column(name = "staffs_degree", length = 100, nullable = false)
+	@Column(name = "staffs_degree", length = 100 )
 	private String degree;
 
-	@Column(name = "staffs_graduate_school", length = 100, nullable = false)
+	@Column(name = "staffs_graduate_school", length = 100 )
 	private String graduateSchool;
 
-	@Column(name = "staffs_professional_title", length = 100, nullable = false)
+	@Column(name = "staffs_professional_title", length = 100 )
 	private String professionalTitle;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "staffs_professional_title_date", nullable = false)
+	@Column(name = "staffs_professional_title_date" )
 	private Date professionalTitleDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "staffs_start_date", nullable = false)
+	@Column(name = "staffs_start_date" )
 	private Date startDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "staffs_contact_expire_date" )
+	private Date contactExpireDate;
 	
 	@Column(name = "staffs_others", length = 100)
 	private String others;
 
-	@Column(name = "staffs_specialty", length = 100, nullable = false)
+	@Column(name = "staffs_specialty", length = 100 )
 	private String specialty;
 
-	@Column(name = "staffs_identityNo", length = 100, nullable = false)
+	@Column(name = "staffs_identityNo", length = 100 )
 	private String identityNo;
 
-	@Column(name = "staffs_tel", length = 100, nullable = false)
+	@Column(name = "staffs_tel", length = 100 )
 	private String tel;
 
-	@Column(name = "staffs_mobile", length = 100, nullable = false)
+	@Column(name = "staffs_mobile", length = 100 )
 	private String mobile;
 
-	@Column(name = "staffs_driving_license_level", length = 100, nullable = false)
+	@Column(name = "staffs_driving_license_level", length = 100 )
 	private String drivingLicenseLevel;
 
-	@Column(name = "staffs_home_address", length = 100, nullable = false)
+	@Column(name = "staffs_home_address", length = 100 )
 	private String homeAddress;
 
-	@Column(name = "staffs_native_address", length = 100, nullable = false)
+	@Column(name = "staffs_native_address", length = 100 )
 	private String nativeAddress;
 
-	@Column(name = "staffs_email", length = 100, nullable = false)
+	@Column(name = "staffs_email", length = 100 )
 	private String email;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "staffs_id", nullable = false)
+    @JoinColumn(name = "staffs_id" )
     @org.hibernate.annotations.IndexColumn(name = "work_experience_position")
     @org.hibernate.annotations.BatchSize(size = 10)
 	private List<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "staffs_id", nullable = false)
+    @JoinColumn(name = "staffs_id" )
     @org.hibernate.annotations.IndexColumn(name = "relatives_position")
     @org.hibernate.annotations.BatchSize(size = 10)
 	private List<Relatives> relatives = new ArrayList<Relatives>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "staffs_id", nullable = false)
+    @JoinColumn(name = "staffs_id" )
     @org.hibernate.annotations.IndexColumn(name = "edu_experience_position")
     @org.hibernate.annotations.BatchSize(size = 10)
 	private List<EduExperience> eduExperiences = new ArrayList<EduExperience>();
 
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "staffs_id", nullable = false)
+    @JoinColumn(name = "staffs_id" )
     @org.hibernate.annotations.BatchSize(size = 10)
 	private Set<Spouse> spouses = new HashSet<Spouse>();
 	
@@ -140,9 +128,11 @@ public class Staffs implements Serializable {
 			String professionalTitle, Date professionalTitleDate,
 			String specialty, String identityNo, String tel, String mobile,
 			String drivingLicenseLevel, String homeAddress,
-			String nativeAddress, String email, Date startDate,
+			String nativeAddress, String email, Date startDate, Date contactExpireDate,
 			List<WorkExperience> workExperiences, List<Relatives> relatives,
-			List<EduExperience> eduExperiences, Set<Spouse> spouses) {
+			List<EduExperience> eduExperiences, Set<Spouse> spouses, String spouseName, Date spouseBirthdate,
+            String spousePoliticsStatus,String spouseNativePlace,String spouseWorkName,
+            String spouseTel, String spouseWorkUnit) {
 		super();
 		this.name = name;
 		this.gender = gender;
@@ -171,6 +161,14 @@ public class Staffs implements Serializable {
 		this.eduExperiences = eduExperiences;
 		this.spouses = spouses;
 		this.startDate = startDate;
+        this.setContactExpireDate(contactExpireDate);
+        this.spouseName =   spouseName;
+        this.spouseBirthdate =   spouseBirthdate;
+        this.spousePoliticsStatus =   spousePoliticsStatus;
+        this.spouseNativePlace =   spouseNativePlace;
+        this.spouseWorkName =   spouseWorkName;
+        this.spouseTel =   spouseTel;
+        this.spouseWorkUnit =   spouseWorkUnit;
 	}
 
 	public Long getId() {
@@ -489,4 +487,12 @@ public class Staffs implements Serializable {
 	public void setSpouseWorkUnit(String spouseWorkUnit) {
 		this.spouseWorkUnit = spouseWorkUnit;
 	}
+
+    public Date getContactExpireDate() {
+        return contactExpireDate;
+    }
+
+    public void setContactExpireDate(Date contactExpireDate) {
+        this.contactExpireDate = contactExpireDate;
+    }
 }

@@ -1,17 +1,16 @@
 package org.xianairlines.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
 import net.sf.json.util.PropertyFilter;
-
 import org.hibernate.collection.PersistentCollection;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.xianairlines.model.Menus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Name("menuAction")
 @Scope(ScopeType.EVENT)
@@ -44,6 +43,13 @@ public class MenuAction {
 			subMenu.setLeaf(true);
 			subMenu.setText("转正提醒");
 			subMenu.setUrl("staffs/NewHireAlertList.seam");
+			menu.addChildren(subMenu);
+
+            subMenu = new Menus();
+			subMenu.setId(9l);
+			subMenu.setLeaf(true);
+			subMenu.setText("合同到期提醒");
+			subMenu.setUrl("staffs/ContractExpireAlertList.seam");
 			menu.addChildren(subMenu);
 			
 		menu = new Menus();

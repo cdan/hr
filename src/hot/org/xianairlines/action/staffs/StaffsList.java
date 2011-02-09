@@ -1,5 +1,19 @@
 package org.xianairlines.action.staffs;
 
+import net.sf.jxls.transformer.XLSTransformer;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
+import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Name;
+import org.jboss.seam.framework.EntityQuery;
+import org.xianairlines.model.Staffs;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,35 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import net.sf.jxls.transformer.XLSTransformer;
-
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.In;
-import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Out;
-import org.jboss.seam.framework.EntityQuery;
-import org.xianairlines.model.Staffs;
+import java.util.*;
 
 @Name("staffsList")
 public class StaffsList extends EntityQuery<Staffs> {
@@ -184,11 +170,12 @@ public class StaffsList extends EntityQuery<Staffs> {
 	public void exportStaffs() throws UnsupportedEncodingException {
 		final HttpServletResponse response = (HttpServletResponse) extCtx
 				.getResponse();
+         long start = System.currentTimeMillis();
+        System.out.println("start" + start);
 		response.setContentType("application/x-download");
 		final String newFileName = encodeFileName("人事信息栏目.xls");
 		response.addHeader("Content-disposition", "attachment;filename="
 				+ newFileName + ";charset=UTF-8");
-
 		Map<String, Object> beans = new HashMap<String, Object>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 		beans.put("staffs", this.getResultList());
@@ -201,10 +188,12 @@ public class StaffsList extends EntityQuery<Staffs> {
 					.getContextClassLoader().getResource("/").getPath()
 					+ "export.xls");
 			os = response.getOutputStream();
+            System.out.println("3----------" + (System.currentTimeMillis() - start));
 			XLSTransformer transformer = new XLSTransformer();
 			workBook = transformer.transformXLS(in, beans);
 			workBook.write(os);
 			os.flush();
+            System.out.println("4----------" + (System.currentTimeMillis() - start));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -47,7 +47,7 @@
     
     <exception class="org.jboss.seam.security.NotLoggedInException">
         <redirect view-id="/login.xhtml">
-            <message severity="warn">#{messages['org.jboss.seam.NotLoggedIn']}</message>
+            <message severity="warn">请登录！</message>
         </redirect>
     </exception>
     

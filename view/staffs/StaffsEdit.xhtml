@@ -32,7 +32,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">性别</ui:define>
 							<h:selectOneMenu id="gender" value="#{staffsHome.staff.gender}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.genderMeta}"></f:selectItems>
 								<a:support event="onblur" reRender="genderField"
@@ -45,15 +45,15 @@
 					<tr>
 						<td><s:decorate id="birthdateField"
 							template="../layout/edit.xhtml">
-							<ui:define name="label">出身日期</ui:define>
-							<rich:calendar locale="zh_CN" id="birthdate" required="true"
+							<ui:define name="label">出生日期</ui:define>
+							<rich:calendar locale="zh_CN" id="birthdate"
 								value="#{staffsHome.staff.birthdate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
 						<td><s:decorate id="nativePlaceField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">籍 贯</ui:define>
-							<h:inputText id="nativePlace" required="true" size="30"
+							<h:inputText id="nativePlace"   size="30"
 								maxlength="100" value="#{staffsHome.staff.nativePlace}">
 								<a:support event="onblur" reRender="nativePlaceField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -65,7 +65,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">民族</ui:define>
 							<h:selectOneMenu id="nation" value="#{staffsHome.staff.nation}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.nationMeta}"></f:selectItems>
 								<a:support event="onblur" reRender="nationField"
@@ -76,7 +76,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">婚 姻 状 况</ui:define>
 							<h:selectOneMenu id="maritalStatus" value="#{staffsHome.staff.maritalStatus}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.maritalMata}"></f:selectItems>
 								<a:support event="onblur" reRender="maritalStatusField"
@@ -90,7 +90,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">政 治 面 貌</ui:define>
 							<h:selectOneMenu id="politicsStatus" value="#{staffsHome.staff.politicsStatus}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.politicsMeta}"></f:selectItems>
 								<a:support event="onblur" reRender="politicsStatusField"
@@ -100,7 +100,7 @@
 						<td><s:decorate id="partyDateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">入党时间</ui:define>
-							<rich:calendar locale="zh_CN" id="partyDate" required="true"
+							<rich:calendar locale="zh_CN" id="partyDate"
 								value="#{staffsHome.staff.partyDate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
@@ -109,7 +109,7 @@
 						<td><s:decorate id="workDateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">参 加 工 作时  间</ui:define>
-							<rich:calendar locale="zh_CN" id="workDate" required="true"
+							<rich:calendar locale="zh_CN" id="workDate"
 								value="#{staffsHome.staff.workDate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
@@ -117,7 +117,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">学历</ui:define>
 							<h:selectOneMenu id="educationBackground" value="#{staffsHome.staff.educationBackground}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.eduBgMata}"></f:selectItems>
 								<a:support event="onblur" reRender="educationBackgroundField"
@@ -130,7 +130,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">学位</ui:define>
 							<h:selectOneMenu id="degree" value="#{staffsHome.staff.degree}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.degreeMata}"></f:selectItems>
 								<a:support event="onblur" reRender="degreeField"
@@ -140,7 +140,7 @@
 						<td><s:decorate id="graduateSchoolField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">毕 业 院 校</ui:define>
-							<h:inputText id="graduateSchool" required="true" size="30"
+							<h:inputText id="graduateSchool"   size="30"
 								maxlength="100" value="#{staffsHome.staff.graduateSchool}">
 								<a:support event="onblur" reRender="graduateSchoolField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -152,7 +152,7 @@
 						<td><s:decorate id="professionalTitleField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">职 称</ui:define>
-							<h:inputText id="professionalTitle" required="true" size="30"
+							<h:inputText id="professionalTitle"   size="30"
 								maxlength="100" value="#{staffsHome.staff.professionalTitle}">
 								<a:support event="onblur" reRender="professionalTitleField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -161,7 +161,7 @@
 						<td><s:decorate id="professionalTitleDateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">职称取得时间</ui:define>
-							<rich:calendar locale="zh_CN" id="professionalTitleDate" required="true"
+							<rich:calendar locale="zh_CN" id="professionalTitleDate"
 								value="#{staffsHome.staff.professionalTitleDate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
@@ -170,7 +170,7 @@
 						<td><s:decorate id="specialtyField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">专 业</ui:define>
-							<h:inputText id="specialty" required="true" size="30"
+							<h:inputText id="specialty"   size="30"
 								maxlength="100" value="#{staffsHome.staff.specialty}">
 								<a:support event="onblur" reRender="specialtyField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -179,7 +179,7 @@
 						<td><s:decorate id="identityNoField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">身份证号</ui:define>
-							<h:inputText id="identityNo" required="true" size="30"
+							<h:inputText id="identityNo"   size="30"
 								maxlength="100" value="#{staffsHome.staff.identityNo}">
 								<a:support event="onblur" reRender="identityNoField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -190,7 +190,7 @@
 					<tr>
 						<td><s:decorate id="telField" template="../layout/edit.xhtml">
 							<ui:define name="label">住 宅 电 话</ui:define>
-							<h:inputText id="tel" required="true" size="30" maxlength="100"
+							<h:inputText id="tel"   size="30" maxlength="100"
 								value="#{staffsHome.staff.tel}">
 								<a:support event="onblur" reRender="telField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -199,7 +199,7 @@
 						<td><s:decorate id="mobileField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">手 机</ui:define>
-							<h:inputText id="mobile" required="true" size="30"
+							<h:inputText id="mobile"   size="30"
 								maxlength="100" value="#{staffsHome.staff.mobile}">
 								<a:support event="onblur" reRender="mobileField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -211,7 +211,7 @@
 						<td><s:decorate id="emailField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">E-MAIL</ui:define>
-							<h:inputText id="email" required="true" size="30" maxlength="100"
+							<h:inputText id="email"   size="30" maxlength="100"
 								value="#{staffsHome.staff.email}">
 								<a:support event="onblur" reRender="emailField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -221,7 +221,7 @@
 							template="../layout/edit.xhtml">
 							<ui:define name="label">驾照类别</ui:define>
 							<h:selectOneMenu id="drivingLicenseLevel" value="#{staffsHome.staff.drivingLicenseLevel}"
-								required="true">
+								 >
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.drivingmeta}"></f:selectItems>
 								<a:support event="onblur" reRender="drivingLicenseLevelField"
@@ -234,7 +234,7 @@
 						<td><s:decorate id="homeAddressField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">家 庭 住 址</ui:define>
-							<h:inputText id="homeAddress" required="true" size="50"
+							<h:inputText id="homeAddress"   size="50"
 								maxlength="100" value="#{staffsHome.staff.homeAddress}">
 								<a:support event="onblur" reRender="homeAddressField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -243,7 +243,7 @@
 						<td><s:decorate id="nativeAddressField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">户 籍所在地</ui:define>
-							<h:inputText id="nativeAddress" required="true" size="50"
+							<h:inputText id="nativeAddress"   size="50"
 								maxlength="100" value="#{staffsHome.staff.nativeAddress}">
 								<a:support event="onblur" reRender="nativeAddressField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -254,7 +254,7 @@
 						<td><s:decorate id="startDate"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">入职时间</ui:define>
-							<rich:calendar locale="zh_CN" id="startDate" required="true"
+							<rich:calendar locale="zh_CN" id="startDate"
 								value="#{staffsHome.staff.startDate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
@@ -267,6 +267,16 @@
 									bypassUpdates="true" ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate></td>
+					</tr>
+                    <tr>
+						<td><s:decorate id="contactExpireDate"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">合同到期时间</ui:define>
+							<rich:calendar locale="zh_CN" id="contactExpireDate"
+								value="#{staffsHome.staff.contactExpireDate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+						<td></td>
 					</tr>
 				</table>
 				<div style="clear: both"></div>
@@ -286,7 +296,7 @@
 						</s:decorate></td>
 						<td><s:decorate id="spousebirthdateField"
 							template="../layout/edit.xhtml">
-							<ui:define name="label">出身日期</ui:define>
+							<ui:define name="label">出生日期</ui:define>
 							<rich:calendar locale="zh_CN" id="birthdate"
 								value="#{staffsHome.staff.spouseBirthdate}"
 								datePattern="yyyy-MM-dd" />
