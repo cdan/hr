@@ -39,7 +39,7 @@
 						<td><s:decorate id="birthdateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">出生日期</ui:define>
-							<rich:calendar id="birthdate"
+							<rich:calendar id="birthdate"  locale="zh_CN"
 								value="#{relativesAction.relative.birthdate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>

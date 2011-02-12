@@ -64,13 +64,11 @@
 						<td><s:decorate id="nationField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">民族</ui:define>
-							<h:selectOneMenu id="nation" value="#{staffsHome.staff.nation}"
-								 >
-								<f:selectItem itemLabel="选择" itemValue="" />
-								<f:selectItems value="#{meta.nationMeta}"></f:selectItems>
+                            <h:inputText id="nation"   size="30"
+								maxlength="100" value="#{staffsHome.staff.nation}">
 								<a:support event="onblur" reRender="nationField"
 									bypassUpdates="true" ajaxSingle="true" />
-							</h:selectOneMenu>
+							</h:inputText>
 						</s:decorate></td>
 						<td><s:decorate id="maritalStatusField"
 							template="../layout/edit.xhtml">
@@ -189,7 +187,7 @@
 
 					<tr>
 						<td><s:decorate id="telField" template="../layout/edit.xhtml">
-							<ui:define name="label">住 宅 电 话</ui:define>
+							<ui:define name="label">住宅电话</ui:define>
 							<h:inputText id="tel"   size="30" maxlength="100"
 								value="#{staffsHome.staff.tel}">
 								<a:support event="onblur" reRender="telField"
@@ -233,7 +231,7 @@
 					<tr>
 						<td><s:decorate id="homeAddressField"
 							template="../layout/edit.xhtml">
-							<ui:define name="label">家 庭 住 址</ui:define>
+							<ui:define name="label">家庭住址</ui:define>
 							<h:inputText id="homeAddress"   size="50"
 								maxlength="100" value="#{staffsHome.staff.homeAddress}">
 								<a:support event="onblur" reRender="homeAddressField"
@@ -242,7 +240,7 @@
 						</s:decorate></td>
 						<td><s:decorate id="nativeAddressField"
 							template="../layout/edit.xhtml">
-							<ui:define name="label">户 籍所在地</ui:define>
+							<ui:define name="label">户籍所在地</ui:define>
 							<h:inputText id="nativeAddress"   size="50"
 								maxlength="100" value="#{staffsHome.staff.nativeAddress}">
 								<a:support event="onblur" reRender="nativeAddressField"
@@ -250,6 +248,124 @@
 							</h:inputText>
 						</s:decorate></td>
 					</tr>
+
+                    <tr>
+						<td><s:decorate id="ssdwField" template="../layout/edit.xhtml">
+							<ui:define name="label">所属单位</ui:define>
+							<h:inputText id="ssdw"   size="30" maxlength="100"
+								value="#{staffsHome.staff.ssdw}">
+								<a:support event="onblur" reRender="ssdwField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="bumenField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">部门</ui:define>
+							<h:inputText id="bumen"   size="30"
+								maxlength="100" value="#{staffsHome.staff.bumen}">
+								<a:support event="onblur" reRender="bumenField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                        <td><s:decorate id="zhiwuField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">职务</ui:define>
+							<h:inputText id="zhiwuField" size="30"
+								maxlength="100" value="#{staffsHome.staff.zhiwu}">
+								<a:support event="onblur" reRender="zhiwuField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="zhiwuDate"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">任现职务时间</ui:define>
+							<rich:calendar locale="zh_CN" id="zhiwuDate"
+								value="#{staffsHome.staff.zhiwudate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                        <td><s:decorate id="zhijiField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">职级</ui:define>
+							<h:inputText id="zhijiField" size="30"
+								maxlength="100" value="#{staffsHome.staff.zhiji}">
+								<a:support event="onblur" reRender="zhijiField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="zhijiDate"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">任现职级时间</ui:define>
+							<rich:calendar locale="zh_CN" id="zhijiDate"
+								value="#{staffsHome.staff.zhijidate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                        <td><s:decorate id="zhuanzhengField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">转正情况</ui:define>
+							<h:inputText id="zhuanzhengField" size="30"
+								maxlength="100" value="#{staffsHome.staff.zhuanzheng}">
+								<a:support event="onblur" reRender="zhuanzhengField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+						<td><s:decorate id="zhuanzhengdate"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">转正时间</ui:define>
+							<rich:calendar locale="zh_CN" id="zhuanzhengdate"
+								value="#{staffsHome.staff.zhuanzhengdate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                        <td><s:decorate id="hetongqiandingField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">合同签订情况</ui:define>
+							<h:inputText id="hetongqiandingField" size="30"
+								maxlength="100" value="#{staffsHome.staff.hetongqianding}">
+								<a:support event="onblur" reRender="hetongqiandingField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+                        <td><s:decorate id="contactExpireDate"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">合同到期时间</ui:define>
+							<rich:calendar locale="zh_CN" id="contactExpireDate"
+								value="#{staffsHome.staff.contactExpireDate}"
+								datePattern="yyyy-MM-dd" />
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                        <td><s:decorate id="bianzhiField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">编制身份</ui:define>
+							<h:inputText id="bianzhiField" size="30"
+								maxlength="100" value="#{staffsHome.staff.bianzhi}">
+								<a:support event="onblur" reRender="bianzhiField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+                        <td><s:decorate id="dingjijibieField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">定级级别</ui:define>
+							<h:inputText id="dingjijibieField" size="30"
+								maxlength="100" value="#{staffsHome.staff.dingjijibie}">
+								<a:support event="onblur" reRender="dingjijibieField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate></td>
+					</tr>
+
 					<tr>
 						<td><s:decorate id="startDate"
 							template="../layout/edit.xhtml">
@@ -268,16 +384,18 @@
 							</h:inputText>
 						</s:decorate></td>
 					</tr>
-                    <tr>
-						<td><s:decorate id="contactExpireDate"
+
+                	<tr>
+						<td><s:decorate id="guanweihuidateField"
 							template="../layout/edit.xhtml">
-							<ui:define name="label">合同到期时间</ui:define>
-							<rich:calendar locale="zh_CN" id="contactExpireDate"
-								value="#{staffsHome.staff.contactExpireDate}"
+							<ui:define name="label">到管委会时间</ui:define>
+							<rich:calendar locale="zh_CN" id="guanweihuidate"
+								value="#{staffsHome.staff.guanweihuidate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
 						<td></td>
 					</tr>
+
 				</table>
 				<div style="clear: both"></div>
 			</rich:panel>

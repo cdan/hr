@@ -148,6 +148,8 @@ public class StaffsHome {
 		
 		 Map<String, Object> beans = new HashMap<String, Object>();
 		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+         SimpleDateFormat ymdateFormat = new SimpleDateFormat("yyyy年MM月");
+         beans.put("ymdateFormat", ymdateFormat);
 	     beans.put("dateFormat", dateFormat);
 		 beans.put("staff", this.staff);
 		 //beans.put("spouse", this.getSpouse());

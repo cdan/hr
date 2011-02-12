@@ -18,9 +18,9 @@
 						<td><s:decorate id="startDateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">开始时间</ui:define>
-							<rich:calendar locale="zh_CN" id="startDate" required="true"
+							<rich:calendar locale="zh_CN" id="startDate"
 								value="#{eduExperienceAction.eduExperience.startDate}"
-								datePattern="yyyy-MM-dd">
+								datePattern="yyyy-MM">
 								<a:support event="onblur" reRender="startDateField"
 									bypassUpdates="true" ajaxSingle="true" />
 								</rich:calendar>
@@ -28,9 +28,9 @@
 						<td><s:decorate id="endDateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">结束时间</ui:define>
-							<rich:calendar locale="zh_CN" id="endDate" required="true"
+							<rich:calendar locale="zh_CN" id="endDate"
 								value="#{eduExperienceAction.eduExperience.endDate}"
-								datePattern="yyyy-MM-dd" >
+								datePattern="yyyy-MM" >
 								<a:support event="onblur" reRender="endDateField"
 									bypassUpdates="true" ajaxSingle="true" />
 								</rich:calendar>
@@ -50,7 +50,7 @@
 						<td><s:decorate id="specialtyField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">专业</ui:define>
-							<h:inputText id="specialty" required="true" size="40"
+							<h:inputText id="specialty"  size="40"
 								maxlength="100" value="#{eduExperienceAction.eduExperience.specialty}">
 								<a:support event="onblur" reRender="specialtyField"
 									bypassUpdates="true" ajaxSingle="true" />
@@ -63,7 +63,7 @@
 							<ui:define name="label">学历</ui:define>
 							<h:selectOneMenu id="educationBackgroundField"
 								value="#{eduExperienceAction.eduExperience.educationBackground}"
-								required="true">
+								>
 								<f:selectItem itemLabel="选择" itemValue="" />
 								<f:selectItems value="#{meta.eduBgMata}"></f:selectItems>
 								<a:support event="onblur" reRender="educationBackgroundField"
@@ -94,11 +94,11 @@
 					<f:facet name="header">
 						起始时间
 					</f:facet>
-					<h:outputText value="#{_eduExperience.endDate}">
-						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
-					</h:outputText>${'---'}
 					<h:outputText value="#{_eduExperience.startDate}">
-						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+						<s:convertDateTime type="both" pattern="yyyy年MM月" />
+					</h:outputText>${'---'}
+					<h:outputText value="#{_eduExperience.endDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月" />
 					</h:outputText>
 				</h:column>
 				<h:column>

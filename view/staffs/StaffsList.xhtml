@@ -42,6 +42,48 @@
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
 					</tr>
+
+                    <tr>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">电子邮件</ui:define>
+							<h:inputText id="email" value="#{staffsList.staffs.email}" />
+						</s:decorate></td>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">电话</ui:define>
+							<h:inputText id="tel" value="#{staffsList.staffs.tel}" />
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">所属单位</ui:define>
+							<h:inputText id="ssdw" value="#{staffsList.staffs.ssdw}" />
+						</s:decorate></td>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">部门</ui:define>
+							<h:inputText id="bumen" value="#{staffsList.staffs.bumen}" />
+						</s:decorate></td>
+					</tr>
+                    <tr>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">职务</ui:define>
+							<h:inputText id="zhiwu" value="#{staffsList.staffs.zhiwu}" />
+						</s:decorate></td>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">职级</ui:define>
+							<h:inputText id="zhiji" value="#{staffsList.staffs.zhiji}" />
+						</s:decorate></td>
+					</tr>
+                    <tr>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">编制身份</ui:define>
+							<h:inputText id="bianzhi" value="#{staffsList.staffs.bianzhi}" />
+						</s:decorate></td>
+						<td><s:decorate template="../layout/display.xhtml">
+							<ui:define name="label">定级级别</ui:define>
+							<h:inputText id="dingjijibie" value="#{staffsList.staffs.dingjijibie}" />
+						</s:decorate></td>
+					</tr>
 				</table>
 
 			</rich:simpleTogglePanel>

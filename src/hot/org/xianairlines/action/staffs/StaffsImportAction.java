@@ -60,6 +60,8 @@ public class StaffsImportAction {
 	}
 	
 	private Staffs getStaffs(HSSFSheet sheet) throws ParseException{
+
+        DateUtil du = new DateUtil();
 		
 		HSSFRow row = 	sheet.getRow(3);
 		String name = row.getCell(1).getStringCellValue();
@@ -101,6 +103,7 @@ public class StaffsImportAction {
 
         String startDate = sheet.getRow(1).getCell(7).getStringCellValue();
         SimpleDateFormat formate = new SimpleDateFormat("yyyy年MM月dd日");
+        SimpleDateFormat ymformate = new SimpleDateFormat("yyyy年MM月");
 
         //edu experiences
         List eduList = new ArrayList();
@@ -110,8 +113,8 @@ public class StaffsImportAction {
             String tempDate = row.getCell(0).getStringCellValue();
             //System.out.println(i);
             if(!tempDate.substring(0, tempDate.indexOf('-')).equals("")) {
-            eduExperience.setStartDate(formate.parse(tempDate.substring(0, tempDate.indexOf('-'))));
-            eduExperience.setEndDate(formate.parse(tempDate.substring(tempDate.indexOf('-')+1,tempDate.length())));
+            eduExperience.setStartDate(du.parse(tempDate.substring(0, tempDate.indexOf('-')), "yyyy年MM月"));
+            eduExperience.setEndDate(du.parse(tempDate.substring(tempDate.indexOf('-')+1,tempDate.length()), "yyyy年MM月"));
 
             String tempSchool = row.getCell(2).getStringCellValue();
             eduExperience.setSchool(tempSchool.substring(0,tempSchool.indexOf('/')));
@@ -130,8 +133,8 @@ public class StaffsImportAction {
             row = sheet.getRow(i);
             String tempDate = row.getCell(0).getStringCellValue();
             if(!tempDate.substring(0, tempDate.indexOf('-')).equals("")) {
-            workExperience.setStartDate(formate.parse(tempDate.substring(0, tempDate.indexOf('-'))));
-            workExperience.setEndDate(formate.parse(tempDate.substring(tempDate.indexOf('-') + 1, tempDate.length())));
+            workExperience.setStartDate(du.parse(tempDate.substring(0, tempDate.indexOf('-')), "yyyy年MM月"));
+            workExperience.setEndDate(du.parse(tempDate.substring(tempDate.indexOf('-') + 1, tempDate.length()), "yyyy年MM月"));
 
             String tempWork = row.getCell(2).getStringCellValue();
             workExperience.setWorkUnit(tempWork.substring(0, tempWork.indexOf('/')));
@@ -152,7 +155,7 @@ public class StaffsImportAction {
             if(!tname.equals("")) {
                 r.setName(row.getCell(1).getStringCellValue());
                 r.setRelative(row.getCell(2).getStringCellValue());
-                r.setBirthdate(formate.parse(row.getCell(3).getStringCellValue()));
+                r.setBirthdate(du.parse(row.getCell(3).getStringCellValue(), "yyyy年MM月dd日"));
                 r.setWorkUnit(row.getCell(4).getStringCellValue());
                 r.setTel(row.getCell(7).getStringCellValue());
                 relativeList.add(r);
@@ -169,15 +172,15 @@ public class StaffsImportAction {
         String spouseWorkUnit = sheet.getRow(33).getCell(2).getStringCellValue();
 
 
-		Staffs staffs = new Staffs(name, gender, formate.parse(birthdate) ,
+		Staffs staffs = new Staffs(name, gender, du.parse(birthdate,"yyyy年MM月dd日") ,
 				nativePlace, nation, maritalStatus,
-				politicsStatus, formate.parse(partyDate),  formate.parse( workDate),
+				politicsStatus, du.parse(partyDate,"yyyy年MM月dd日"),  du.parse( workDate,"yyyy年MM月dd日"),
 				educationBackground, degree,  graduateSchool,
-				professionalTitle, formate.parse( professionalTitleDate),
+				professionalTitle, du.parse( professionalTitleDate,"yyyy年MM月dd日"),
 				specialty,  identityNo,  tel,  mobile,
 				drivingLicenseLevel,  homeAddress,
-				nativeAddress,  email, formate.parse(startDate),null, workList, relativeList, eduList, null,
-                spouseName, formate.parse(spouseBirthdate), spousePoliticsStatus,spouseNativePlace,spouseWorkName,
+				nativeAddress,  email, du.parse(startDate,"yyyy年MM月dd日"),null, workList, relativeList, eduList, null,
+                spouseName, du.parse(spouseBirthdate,"yyyy年MM月dd日"), spousePoliticsStatus,spouseNativePlace,spouseWorkName,
                 spouseTel, spouseWorkUnit);
 		return staffs;
 		

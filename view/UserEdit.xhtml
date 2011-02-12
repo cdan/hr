@@ -30,11 +30,11 @@
 
             <s:decorate id="nameField" template="layout/edit.xhtml">
                 <ui:define name="label">Name</ui:define>
-                <h:inputText id="name"
+                <h:inputText id="name"  disabled="#{userHome.managed}"
                        required="true"
                            size="45"
                       maxlength="45"
-                          value="#{userHome.instance.name}">
+                          value="#{userHome.instance.name}" >
                     <a:support event="onblur" reRender="nameField" bypassUpdates="true" ajaxSingle="true"/>
                 </h:inputText>
             </s:decorate>
@@ -42,13 +42,23 @@
 
             <s:decorate id="passwordField" template="layout/edit.xhtml">
                 <ui:define name="label">Password</ui:define>
-                <h:inputText id="password"
+                <h:inputSecret id="password"
                        required="true"
                            size="45"
                       maxlength="45"
                           value="#{userHome.instance.password}">
-                    <a:support event="onblur" reRender="passwordField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
+
+                </h:inputSecret>
+            </s:decorate>
+            <s:decorate id="repasswordField" template="layout/edit.xhtml">
+                <ui:define name="label">Retype Password</ui:define>
+                <h:inputSecret id="retypepassword"
+                       required="true"
+                           size="45"
+                      maxlength="45"
+                          value="#{userHome.passwordVerify}">
+
+                </h:inputSecret>
             </s:decorate>
 
 
@@ -87,7 +97,7 @@
 
             <h:commandButton id="save"
                           value="Save"
-                         action="#{userHome.persist}"
+                         action="#{userHome.save}"
                        disabled="#{!userHome.wired}"
                        rendered="#{!userHome.managed}"/>
 

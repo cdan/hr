@@ -162,6 +162,89 @@
 							<h:outputText id="nativeAddress" value="#{staffsHome.staff.nativeAddress}"/>
 						</s:decorate></td>
 					</tr>
+
+                   	<tr>
+						<td><s:decorate id="ssdwField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">所属单位</ui:define>
+							<h:outputText id="ssdw" value="#{staffsHome.staff.ssdw}"/>
+						</s:decorate></td>
+						<td><s:decorate id="bumenField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">部门</ui:define>
+							<h:outputText id="bumen" value="#{staffsHome.staff.bumen}"/>
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                       <td><s:decorate id="zhiwuField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">职务</ui:define>
+							<h:outputText id="zhiwu" value="#{staffsHome.staff.zhiwu}"/>
+						</s:decorate></td>
+						<td><s:decorate id="shiwudateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">任现职务时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.zhiwudate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+                       <td><s:decorate id="zhijiField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">职级</ui:define>
+							<h:outputText id="zhiwu" value="#{staffsHome.staff.zhiwu}"/>
+						</s:decorate></td>
+						<td><s:decorate id="shijidateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">任现职级时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.zhijidate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+                    <tr>
+                       <td><s:decorate id="zhuanzhengField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">转正情况</ui:define>
+							<h:outputText id="zhuanzheng" value="#{staffsHome.staff.zhuanzheng}"/>
+						</s:decorate></td>
+						<td><s:decorate id="zhuanzhengdateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">转正时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.zhuanzhengdate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+                    <tr>
+                         <td><s:decorate id="qiandingqingkuangField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">合同签订情况</ui:define>
+							<h:outputText id="hetongqianding" value="#{staffsHome.staff.hetongqianding}"/>
+						</s:decorate></td>
+						<td><s:decorate id="startDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">合同到期时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.contactExpireDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+                    <tr>
+                         <td><s:decorate id="bianzhiField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">编制情况</ui:define>
+							<h:outputText id="bianzhi" value="#{staffsHome.staff.bianzhi}"/>
+						</s:decorate></td>
+                         <td><s:decorate id="dingjijibieField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">定级级别</ui:define>
+							<h:outputText id="dingjijibie" value="#{staffsHome.staff.dingjijibie}"/>
+						</s:decorate></td>
+					</tr>
 					<tr>
 						<td><s:decorate id="startDateField"
 							template="../layout/display.xhtml">
@@ -176,16 +259,18 @@
 							<h:outputText id="others" value="#{staffsHome.staff.others}"/>
 						</s:decorate></td>
 					</tr>
-                    <tr>
-						<td><s:decorate id="startDateField"
+
+                	<tr>
+						<td><s:decorate id="guanweihuidateField"
 							template="../layout/display.xhtml">
-							<ui:define name="label">合同到期时间</ui:define>
-							<h:outputText value="#{staffsHome.staff.contactExpireDate}">
+							<ui:define name="label">到管委会时间</ui:define>
+							<h:outputText value="#{staffsHome.staff.guanweihuidate}">
 							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
 							</h:outputText>
 						</s:decorate></td>
 						<td></td>
 					</tr>
+
 				</table>
 				<div style="clear: both"></div>
 			</rich:panel>
@@ -253,11 +338,11 @@
 					<f:facet name="header">
 						起始时间
 					</f:facet>
-					<h:outputText value="#{_eduExperience.endDate}">
-						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
-					</h:outputText>${'---'}
 					<h:outputText value="#{_eduExperience.startDate}">
-						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+						<s:convertDateTime type="both" pattern="yyyy年MM月" />
+					</h:outputText>${'---'}
+					<h:outputText value="#{_eduExperience.endDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月" />
 					</h:outputText>
 				</h:column>
 				<h:column>
@@ -291,11 +376,11 @@
 					<f:facet name="header">
 						起始时间
 					</f:facet>
-					<h:outputText value="#{_workExperience.endDate}">
-						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
-					</h:outputText>${'---'}
 					<h:outputText value="#{_workExperience.startDate}">
-						<s:convertDateTime type="both" pattern="yyyy年MM月dd日" />
+						<s:convertDateTime type="both" pattern="yyyy年MM月" />
+					</h:outputText>${'---'}
+					<h:outputText value="#{_workExperience.endDate}">
+						<s:convertDateTime type="both" pattern="yyyy年MM月" />
 					</h:outputText>
 				</h:column>
 				<h:column>

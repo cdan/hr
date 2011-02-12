@@ -26,14 +26,19 @@ Ext.ux.Workbench.prototype = {
     },
     createNorthPanel: function() {
         var html = '<iframe id="frame_menu" src="layout/menu.seam" frameborder="0" width="100%" height="100%"></iframe>';
+        //var html = ' <img src="/xcaib/img/xcaib.jpg" width="85%" height="80" /> ';
+        //var html = ' <h:graphicImage value="../img/xcaib.jpg" styleClass="pic" width="85%" height="90"/> ';
         var isDemoMode = typeof App != 'undefined' && App.MODE_DEMO === true;
         return {
             region: 'north',
-            height: isDemoMode ? 0 : 40,
+            //height: isDemoMode ? 0 : 40,
+            //autoHeight: true,
+            height: 98,
             margins: '0 0 0 0',
             html:html,
-            split: true,
-            collapsible: true,
+            split: false,
+            collapsible: false,
+            //autoScroll:false,
 //            bbar: new Ext.Toolbar(['->', {
 //                text: 'Logout',
 //                iconCls: 'logout-btn',
@@ -46,9 +51,30 @@ Ext.ux.Workbench.prototype = {
     },
 
     createSouthPanel: function() {
+//        var html = '<iframe id="frame_menu" src="layout/menu.seam" frameborder="0" width="100%" height="100%"></iframe>';
+//        //var html = ' <img src="/xcaib/img/xcaib.jpg" width="85%" height="80" /> ';
+//        //var html = ' <h:graphicImage value="../img/xcaib.jpg" styleClass="pic" width="85%" height="90"/> ';
+//        //var isDemoMode = typeof App != 'undefined' && App.MODE_DEMO === true;
+//        return {
+//            region: 'south',
+//            //height: isDemoMode ? 0 : 40,
+//            height: 25,
+//            margins: '0 0 0 0',
+//            html:html,
+//            split: false,
+//            collapsible: false,
+////            bbar: new Ext.Toolbar(['->', {
+////                text: 'Logout',
+////                iconCls: 'logout-btn',
+////                handler: function() {
+////                    this.logout();
+////                },
+////                scope: this
+////            }])
+//        };
         return {
             region: 'south',
-            height: 18,
+            height: 1,
             margins: '5 0 0 0',
             border: false,
             frame: false,

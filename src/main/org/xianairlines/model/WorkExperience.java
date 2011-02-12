@@ -1,18 +1,8 @@
 package org.xianairlines.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "work_experience")
@@ -24,20 +14,20 @@ public class WorkExperience implements Serializable {
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "work_experience_start_date", nullable = false)
+	@Column(name = "work_experience_start_date")
 	private Date startDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "work_experience_end_date", nullable = false)
+	@Column(name = "work_experience_end_date")
 	private Date endDate;
 	
 	@Column(name = "work_experience_work_unit", length = 100, nullable = false)
 	private String workUnit;
 	
-	@Column(name = "work_experience_department", length = 100, nullable = false)
+	@Column(name = "work_experience_department")
 	private String department;
 	
-	@Column(name = "work_experience_work_name", length = 100, nullable = false)
+	@Column(name = "work_experience_work_name")
 	private String workName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -46,7 +46,13 @@ public class StaffsList extends EntityQuery<Staffs> {
 			"lower(staffs.politicsStatus) like lower(concat(#{staffsList.staffs.politicsStatus},'%'))",
 			"lower(staffs.professionalTitle) like lower(concat(#{staffsList.staffs.professionalTitle},'%'))",
 			"lower(staffs.specialty) like lower(concat(#{staffsList.staffs.specialty},'%'))",
-			"lower(staffs.tel) like lower(concat(#{staffsList.staffs.tel},'%'))", 
+			"lower(staffs.tel) like lower(concat(#{staffsList.staffs.tel},'%'))",
+            "lower(staffs.ssdw) like lower(concat(#{staffsList.staffs.ssdw},'%'))",
+            "lower(staffs.bumen) like lower(concat(#{staffsList.staffs.bumen},'%'))",
+            "lower(staffs.zhiwu) like lower(concat(#{staffsList.staffs.zhiwu},'%'))",
+            "lower(staffs.zhiji) like lower(concat(#{staffsList.staffs.zhiji},'%'))",
+            "lower(staffs.bianzhi) like lower(concat(#{staffsList.staffs.bianzhi},'%'))",
+            "lower(staffs.dingjijibie) like lower(concat(#{staffsList.staffs.dingjijibie},'%'))",
 			"staffs.birthdate >= #{staffsList.birthdateFrom}",
 			"staffs.birthdate <= #{staffsList.birthdateTo}",};
 

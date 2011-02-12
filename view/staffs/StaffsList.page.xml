@@ -24,6 +24,14 @@
  <param name="professionalTitle" value="#{staffsList.staffs.professionalTitle}"/>
  <param name="specialty" value="#{staffsList.staffs.specialty}"/>
  <param name="tel" value="#{staffsList.staffs.tel}"/>
+
+     <param name="ssdw" value="#{staffsList.staffs.ssdw}"/>
+     <param name="bumen" value="#{staffsList.staffs.bumen}"/>
+     <param name="zhiwu" value="#{staffsList.staffs.zhiwu}"/>
+     <param name="zhiji" value="#{staffsList.staffs.zhiji}"/>
+     <param name="bianzhi" value="#{staffsList.staffs.bianzhi}"/>
+     <param name="dingjijibie" value="#{staffsList.staffs.dingjijibie}"/>
+
  <param name="birthdayFrom" value="#{staffsList.birthdateFrom}" converterId="org.jboss.seam.ui.DateTimeConverter"/>
  <param name="birthdayTo" value="#{staffsList.birthdateTo}" converterId="org.jboss.seam.ui.DateTimeConverter"/>
 </page>

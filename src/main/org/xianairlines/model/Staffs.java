@@ -96,7 +96,8 @@ public class Staffs implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "staffs_id" )
-    @org.hibernate.annotations.IndexColumn(name = "work_experience_position")
+    @OrderBy("startDate desc")
+    //@org.hibernate.annotations.IndexColumn(name = "work_experience_position")
     @org.hibernate.annotations.BatchSize(size = 10)
 	private List<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
 
@@ -108,7 +109,8 @@ public class Staffs implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "staffs_id" )
-    @org.hibernate.annotations.IndexColumn(name = "edu_experience_position")
+    @OrderBy("startDate desc")
+    //@org.hibernate.annotations.IndexColumn(name = "edu_experience_position")
     @org.hibernate.annotations.BatchSize(size = 10)
 	private List<EduExperience> eduExperiences = new ArrayList<EduExperience>();
 
@@ -161,7 +163,7 @@ public class Staffs implements Serializable {
 		this.eduExperiences = eduExperiences;
 		this.spouses = spouses;
 		this.startDate = startDate;
-        this.setContactExpireDate(contactExpireDate);
+        this.contactExpireDate =contactExpireDate;
         this.spouseName =   spouseName;
         this.spouseBirthdate =   spouseBirthdate;
         this.spousePoliticsStatus =   spousePoliticsStatus;
@@ -494,5 +496,159 @@ public class Staffs implements Serializable {
 
     public void setContactExpireDate(Date contactExpireDate) {
         this.contactExpireDate = contactExpireDate;
+    }
+
+    //export.xls colums
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "canjiagongzuodate")
+	private Date canjiagongzuodate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "guanweihuidate")
+	private Date guanweihuidate;
+
+	@Column(name = "ssdw", length = 100)
+	private String ssdw;
+
+    @Column(name = "bumen", length = 100)
+	private String bumen;
+
+    @Column(name = "zhiwu", length = 100)
+	private String zhiwu;
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "zhiwudate")
+	private Date zhiwudate;
+
+    @Column(name = "zhiji", length = 100)
+	private String zhiji;
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "zhijidate")
+	private Date zhijidate;
+    @Column(name = "bianzhi", length = 100)
+	private String bianzhi;
+
+    @Column(name = "zhuanzheng", length = 100)
+	private String zhuanzheng;
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "zhuanzhengdate")
+	private Date zhuanzhengdate;
+
+    @Column(name = "hetongqianding", length = 100)
+	private String hetongqianding;
+    @Column(name = "qiandingqixian", length = 100)
+	private String qiandingqixian;
+    @Column(name = "dingjijibie", length = 100)
+	private String dingjijibie;
+
+    public Date getCanjiagongzuodate() {
+        return canjiagongzuodate;
+    }
+
+    public void setCanjiagongzuodate(Date canjiagongzuodate) {
+        this.canjiagongzuodate = canjiagongzuodate;
+    }
+
+    public Date getGuanweihuidate() {
+        return guanweihuidate;
+    }
+
+    public void setGuanweihuidate(Date guanweihuidate) {
+        this.guanweihuidate = guanweihuidate;
+    }
+
+    public String getSsdw() {
+        return ssdw;
+    }
+
+    public void setSsdw(String ssdw) {
+        this.ssdw = ssdw;
+    }
+
+    public String getBumen() {
+        return bumen;
+    }
+
+    public void setBumen(String bumen) {
+        this.bumen = bumen;
+    }
+
+    public String getZhiwu() {
+        return zhiwu;
+    }
+
+    public void setZhiwu(String zhiwu) {
+        this.zhiwu = zhiwu;
+    }
+
+    public Date getZhiwudate() {
+        return zhiwudate;
+    }
+
+    public void setZhiwudate(Date zhiwudate) {
+        this.zhiwudate = zhiwudate;
+    }
+
+    public String getZhiji() {
+        return zhiji;
+    }
+
+    public void setZhiji(String zhiji) {
+        this.zhiji = zhiji;
+    }
+
+    public Date getZhijidate() {
+        return zhijidate;
+    }
+
+    public void setZhijidate(Date zhijidate) {
+        this.zhijidate = zhijidate;
+    }
+
+    public String getBianzhi() {
+        return bianzhi;
+    }
+
+    public void setBianzhi(String bianzhi) {
+        this.bianzhi = bianzhi;
+    }
+
+    public String getZhuanzheng() {
+        return zhuanzheng;
+    }
+
+    public void setZhuanzheng(String zhuanzheng) {
+        this.zhuanzheng = zhuanzheng;
+    }
+
+    public Date getZhuanzhengdate() {
+        return zhuanzhengdate;
+    }
+
+    public void setZhuanzhengdate(Date zhuanzhengdate) {
+        this.zhuanzhengdate = zhuanzhengdate;
+    }
+
+    public String getHetongqianding() {
+        return hetongqianding;
+    }
+
+    public void setHetongqianding(String hetongqianding) {
+        this.hetongqianding = hetongqianding;
+    }
+
+    public String getQiandingqixian() {
+        return qiandingqixian;
+    }
+
+    public void setQiandingqixian(String qiandingqixian) {
+        this.qiandingqixian = qiandingqixian;
+    }
+
+    public String getDingjijibie() {
+        return dingjijibie;
+    }
+
+    public void setDingjijibie(String dingjijibie) {
+        this.dingjijibie = dingjijibie;
     }
 }
