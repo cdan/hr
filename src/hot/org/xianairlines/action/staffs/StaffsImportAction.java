@@ -93,11 +93,13 @@ public class StaffsImportAction {
 		String professionalTitle = row.getCell(1).getStringCellValue();
 		Date professionalTitleDate = parse(row.getCell(3));
 		String specialty =   row.getCell(5).getStringCellValue();
-		String identityNo =   row.getCell(7).getStringCellValue();
+		String identityNo =   readCell(row.getCell(7));
 		
 		row = 	sheet.getRow(8);
-		String tel = row.getCell(1).getStringCellValue();
-		String mobile = row.getCell(5).getStringCellValue();
+        System.out.println("电话类型"+row.getCell(1).getCellType());
+		String tel = readCell(row.getCell(1));
+
+		String mobile = readCell(row.getCell(5));
 		String drivingLicenseLevel =   row.getCell(7).getStringCellValue();
 		row = 	sheet.getRow(9);
 		String homeAddress = row.getCell(1).getStringCellValue();
@@ -162,7 +164,7 @@ public class StaffsImportAction {
                 r.setRelative(row.getCell(2).getStringCellValue());
                 r.setBirthdate(parse(row.getCell(3)));
                 r.setWorkUnit(row.getCell(4).getStringCellValue());
-                r.setTel(row.getCell(7).getStringCellValue());
+                r.setTel(readCell(row.getCell(7)));
                 relativeList.add(r);
             }
         }
@@ -173,7 +175,7 @@ public class StaffsImportAction {
         String spousePoliticsStatus  = sheet.getRow(31).getCell(6).getStringCellValue();
         String spouseNativePlace = sheet.getRow(32).getCell(2).getStringCellValue();
         String spouseWorkName = sheet.getRow(32).getCell(4).getStringCellValue();
-        String spouseTel = sheet.getRow(32).getCell(6).getStringCellValue();
+        String spouseTel = readCell(sheet.getRow(32).getCell(6));
         String spouseWorkUnit = sheet.getRow(33).getCell(2).getStringCellValue();
 
 
@@ -198,5 +200,17 @@ public class StaffsImportAction {
         if (cell.getCellType() == 1) return du.parse(cell.getStringCellValue(), "yyyy年MM月dd日");
         return null;
     }
-		
-	}
+
+    private String readCell(HSSFCell cell) {
+        if(cell.getCellType() == HSSFCell.CELL_TYPE_STRING){
+            return cell.getStringCellValue();
+        }
+        else if(cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC){
+            return String.valueOf(cell.getNumericCellValue());
+        }
+        else if(cell.getCellType() == HSSFCell.CELL_TYPE_BLANK){
+
+        }
+        return null;
+    }
+}
