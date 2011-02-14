@@ -14,7 +14,7 @@
     <h:form id="user" styleClass="edit">
 
         <rich:panel>
-            <f:facet name="header">#{userHome.managed ? 'Edit' : 'Add'} User</f:facet>
+            <f:facet name="header">#{userHome.managed ? '编辑' : '添加'} 用户</f:facet>
 
 
             <!-- s:decorate id="idField" template="layout/edit.xhtml">
@@ -29,7 +29,7 @@
 
 
             <s:decorate id="nameField" template="layout/edit.xhtml">
-                <ui:define name="label">Name</ui:define>
+                <ui:define name="label">用户名</ui:define>
                 <h:inputText id="name"  disabled="#{userHome.managed}"
                        required="true"
                            size="45"
@@ -41,7 +41,7 @@
 
 
             <s:decorate id="passwordField" template="layout/edit.xhtml">
-                <ui:define name="label">Password</ui:define>
+                <ui:define name="label">密码</ui:define>
                 <h:inputSecret id="password"
                        required="true"
                            size="45"
@@ -51,7 +51,7 @@
                 </h:inputSecret>
             </s:decorate>
             <s:decorate id="repasswordField" template="layout/edit.xhtml">
-                <ui:define name="label">Retype Password</ui:define>
+                <ui:define name="label">密码确认</ui:define>
                 <h:inputSecret id="retypepassword"
                        required="true"
                            size="45"
@@ -96,30 +96,30 @@
         <div class="actionButtons">
 
             <h:commandButton id="save"
-                          value="Save"
+                          value="保存"
                          action="#{userHome.save}"
                        disabled="#{!userHome.wired}"
                        rendered="#{!userHome.managed}"/>
 
             <h:commandButton id="update"
-                          value="Save"
+                          value="保存"
                          action="#{userHome.update}"
                        rendered="#{userHome.managed}"/>
 
             <h:commandButton id="delete"
-                          value="Delete"
+                          value="删除"
                          action="#{userHome.remove}"
                       immediate="true"
                        rendered="#{userHome.managed}"/>
 
             <s:button id="cancelEdit"
-                   value="Cancel"
+                   value="取消"
              propagation="end"
                     view="/User.xhtml"
                 rendered="#{userHome.managed}"/>
 
             <s:button id="cancelAdd"
-                   value="Cancel"
+                   value="取消"
              propagation="end"
                     view="/#{empty userFrom ? 'UserList' : userFrom}.xhtml"
                 rendered="#{!userHome.managed}"/>

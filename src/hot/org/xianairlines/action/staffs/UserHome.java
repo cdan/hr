@@ -82,13 +82,13 @@ public class UserHome extends EntityHome<User> {
 
     public java.lang.String update() {
         if (!isPasswordsMatch()) {
-           facesMessages.add("password not same");
+           facesMessages.add("密码不一致");
            return null;
         }
         try {
             super.update();
             //getEntityManager().persist(instance);
-            facesMessages.addFromResourceBundle("updateCustomerSuccess");
+            facesMessages.addFromResourceBundle("更新成功");
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,12 +99,12 @@ public class UserHome extends EntityHome<User> {
 
     public java.lang.String save() {
         if (!isValidNamePassword()) {
-           facesMessages.add("User name #{customer.userName} is not unique");
+           facesMessages.add("用户名 #{customer.userName} 已经存在");
            return null;
         }
         try {
             getEntityManager().persist(instance);
-            facesMessages.addFromResourceBundle("createCustomerSuccess");
+            facesMessages.addFromResourceBundle("生成成功");
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,11 +115,11 @@ public class UserHome extends EntityHome<User> {
         public boolean isValidNamePassword() {
         boolean ok = true;
         if (!isUniqueName()) {
-            facesMessages.add("userName", "This name is already in use");
+            facesMessages.add( "用户名已存在");
             ok = false;
         }
         if (!isPasswordsMatch()) {
-            facesMessages.add("passwordVerify", "Must match password field");
+            facesMessages.add( "密码不一致");
             ok = false;
         }
         return ok;

@@ -11,7 +11,7 @@
 <ui:define name="body">
 
     <rich:panel>
-        <f:facet name="header">User Details</f:facet>
+        <f:facet name="header">用户详细信息</f:facet>
 
         <!--s:decorate id="id" template="layout/display.xhtml">
             <ui:define name="label">Id</ui:define>
@@ -19,17 +19,17 @@
         </s:decorate-->
 
         <s:decorate id="name" template="layout/display.xhtml">
-            <ui:define name="label">Name</ui:define>
+            <ui:define name="label">用户名</ui:define>
             <h:outputText value="#{userHome.instance.name}"/>
         </s:decorate>
 
         <s:decorate id="password" template="layout/display.xhtml">
-            <ui:define name="label">Password</ui:define>
+            <ui:define name="label">密码</ui:define>
             <h:outputText value="#{userHome.instance.password}"/>
         </s:decorate>
 
         <s:decorate id="role" template="layout/display.xhtml">
-            <ui:define name="label">Role</ui:define>
+            <ui:define name="label">权限</ui:define>
             <h:outputText value="#{userHome.instance.role}"/>
         </s:decorate>
 

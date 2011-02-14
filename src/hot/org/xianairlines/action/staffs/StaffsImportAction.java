@@ -1,5 +1,6 @@
 package org.xianairlines.action.staffs;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Name("staffsImportAction")
@@ -66,7 +68,8 @@ public class StaffsImportAction {
 		HSSFRow row = 	sheet.getRow(3);
 		String name = row.getCell(1).getStringCellValue();
 		String gender = row.getCell(3).getStringCellValue();
-		String birthdate =   row.getCell(5).getStringCellValue();
+		Date birthdate = parse(row.getCell(5));
+        System.out.println("生日类型"+row.getCell(5).getCellType());
 		
 		row = 	sheet.getRow(4);
 		String nativePlace = row.getCell(1).getStringCellValue();
@@ -75,8 +78,10 @@ public class StaffsImportAction {
 		
 		row = 	sheet.getRow(5);
 		String politicsStatus = row.getCell(1).getStringCellValue();
-		String partyDate = row.getCell(3).getStringCellValue();
-		String workDate =   row.getCell(5).getStringCellValue();
+
+		Date partyDate = parse(row.getCell(3));
+        System.out.println("入党"+row.getCell(3).getCellType());
+		Date workDate =  parse(row.getCell(5));
 		
 		row = 	sheet.getRow(6);
 		String educationBackground = row.getCell(1).getStringCellValue();
@@ -86,7 +91,7 @@ public class StaffsImportAction {
 		
 		row = 	sheet.getRow(7);
 		String professionalTitle = row.getCell(1).getStringCellValue();
-		String professionalTitleDate = row.getCell(3).getStringCellValue();
+		Date professionalTitleDate = parse(row.getCell(3));
 		String specialty =   row.getCell(5).getStringCellValue();
 		String identityNo =   row.getCell(7).getStringCellValue();
 		
@@ -101,7 +106,7 @@ public class StaffsImportAction {
 		row = 	sheet.getRow(11);
 		String email = row.getCell(1).getStringCellValue();
 
-        String startDate = sheet.getRow(1).getCell(7).getStringCellValue();
+        Date startDate = parse(sheet.getRow(1).getCell(7));
         SimpleDateFormat formate = new SimpleDateFormat("yyyy年MM月dd日");
         SimpleDateFormat ymformate = new SimpleDateFormat("yyyy年MM月");
 
@@ -155,7 +160,7 @@ public class StaffsImportAction {
             if(!tname.equals("")) {
                 r.setName(row.getCell(1).getStringCellValue());
                 r.setRelative(row.getCell(2).getStringCellValue());
-                r.setBirthdate(du.parse(row.getCell(3).getStringCellValue(), "yyyy年MM月dd日"));
+                r.setBirthdate(parse(row.getCell(3)));
                 r.setWorkUnit(row.getCell(4).getStringCellValue());
                 r.setTel(row.getCell(7).getStringCellValue());
                 relativeList.add(r);
@@ -164,7 +169,7 @@ public class StaffsImportAction {
 
         //spouse info
         String spouseName = sheet.getRow(31).getCell(2).getStringCellValue();
-        String spouseBirthdate = sheet.getRow(31).getCell(4).getStringCellValue();
+        Date spouseBirthdate = parse(sheet.getRow(31).getCell(4));
         String spousePoliticsStatus  = sheet.getRow(31).getCell(6).getStringCellValue();
         String spouseNativePlace = sheet.getRow(32).getCell(2).getStringCellValue();
         String spouseWorkName = sheet.getRow(32).getCell(4).getStringCellValue();
@@ -172,18 +177,26 @@ public class StaffsImportAction {
         String spouseWorkUnit = sheet.getRow(33).getCell(2).getStringCellValue();
 
 
-		Staffs staffs = new Staffs(name, gender, du.parse(birthdate,"yyyy年MM月dd日") ,
+		Staffs staffs = new Staffs(name, gender, birthdate ,
 				nativePlace, nation, maritalStatus,
-				politicsStatus, du.parse(partyDate,"yyyy年MM月dd日"),  du.parse( workDate,"yyyy年MM月dd日"),
+				politicsStatus, partyDate,  workDate,
 				educationBackground, degree,  graduateSchool,
-				professionalTitle, du.parse( professionalTitleDate,"yyyy年MM月dd日"),
+				professionalTitle, professionalTitleDate,
 				specialty,  identityNo,  tel,  mobile,
 				drivingLicenseLevel,  homeAddress,
-				nativeAddress,  email, du.parse(startDate,"yyyy年MM月dd日"),null, workList, relativeList, eduList, null,
-                spouseName, du.parse(spouseBirthdate,"yyyy年MM月dd日"), spousePoliticsStatus,spouseNativePlace,spouseWorkName,
+				nativeAddress,  email, startDate,null, workList, relativeList, eduList, null,
+                spouseName, spouseBirthdate, spousePoliticsStatus,spouseNativePlace,spouseWorkName,
                 spouseTel, spouseWorkUnit);
 		return staffs;
 		
 	}
+
+
+    private Date parse(HSSFCell cell) {
+        DateUtil du = new DateUtil();
+        if (cell.getCellType() == 0) return cell.getDateCellValue();
+        if (cell.getCellType() == 1) return du.parse(cell.getStringCellValue(), "yyyy年MM月dd日");
+        return null;
+    }
 		
 	}

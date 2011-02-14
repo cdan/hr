@@ -12,10 +12,10 @@
 
     <h:form id="userSearch" styleClass="edit">
 
-        <rich:simpleTogglePanel label="User Search Filter" switchType="ajax">
+        <rich:simpleTogglePanel label="查询条件" switchType="ajax">
 
             <s:decorate template="layout/display.xhtml">
-                <ui:define name="label">Name</ui:define>
+                <ui:define name="label">用户名</ui:define>
                 <h:inputText id="name" value="#{userList.user.name}"/>
             </s:decorate>
 
@@ -25,7 +25,7 @@
             </s:decorate-->
 
             <s:decorate template="layout/display.xhtml">
-                <ui:define name="label">Role</ui:define>
+                <ui:define name="label">角色</ui:define>
                 <h:inputText id="role" value="#{userList.user.role}"/>
             </s:decorate>
 
@@ -40,14 +40,14 @@
         </rich:simpleTogglePanel>
 
         <div class="actionButtons">
-            <h:commandButton id="search" value="Search" action="/UserList.xhtml"/>
-            <s:button id="reset" value="Reset" includePageParams="false"/>
+            <h:commandButton id="search" value="查找" action="/UserList.xhtml"/>
+            <s:button id="reset" value="重置" includePageParams="false"/>
         </div>
 
     </h:form>
 
     <rich:panel>
-        <f:facet name="header">User Search Results (#{empty userList.resultList ? 0 : (userList.paginated ? userList.resultCount : userList.resultList.size)})</f:facet>
+        <f:facet name="header">查询结果 (#{empty userList.resultList ? 0 : (userList.paginated ? userList.resultCount : userList.resultList.size)})</f:facet>
     <div class="results" id="userList">
 
     <h:outputText value="The user search returned no results."
@@ -61,7 +61,7 @@
             <f:facet name="header">
                 <ui:include src="layout/sort.xhtml">
                     <ui:param name="entityList" value="#{userList}"/>
-                    <ui:param name="propertyLabel" value="Id"/>
+                    <ui:param name="propertyLabel" value="编号"/>
                     <ui:param name="propertyPath" value="user.id"/>
                 </ui:include>
             </f:facet>
@@ -71,13 +71,13 @@
             <f:facet name="header">
                 <ui:include src="layout/sort.xhtml">
                     <ui:param name="entityList" value="#{userList}"/>
-                    <ui:param name="propertyLabel" value="Name"/>
+                    <ui:param name="propertyLabel" value="用户名"/>
                     <ui:param name="propertyPath" value="user.name"/>
                 </ui:include>
             </f:facet>
             <h:outputText value="#{_user.name}"/>
         </h:column>
-        <h:column>
+        <!--h:column>
             <f:facet name="header">
                 <ui:include src="layout/sort.xhtml">
                     <ui:param name="entityList" value="#{userList}"/>
@@ -86,21 +86,21 @@
                 </ui:include>
             </f:facet>
             <h:outputText value="#{_user.password}"/>
-        </h:column>
+        </h:column-->
         <h:column>
             <f:facet name="header">
                 <ui:include src="layout/sort.xhtml">
                     <ui:param name="entityList" value="#{userList}"/>
-                    <ui:param name="propertyLabel" value="Role"/>
+                    <ui:param name="propertyLabel" value="角色"/>
                     <ui:param name="propertyPath" value="user.role"/>
                 </ui:include>
             </f:facet>
             <h:outputText value="#{_user.role}"/>
         </h:column>
         <rich:column styleClass="action">
-            <f:facet name="header">Action</f:facet>
+            <f:facet name="header">操作</f:facet>
             <s:link view="/#{empty from ? 'User' : from}.xhtml"
-                   value="#{empty from ? 'View' : 'Select'}"
+                   value="#{empty from ? '查看' : '选择'}"
              propagation="#{empty from ? 'none' : 'default'}"
                       id="userViewId">
                 <f:param name="userId"
@@ -108,7 +108,7 @@
             </s:link>
             #{' '}
             <s:link view="/UserEdit.xhtml"
-                   value="Edit"
+                   value="编辑"
              propagation="none"
                       id="userEdit"
                 rendered="#{empty from}">
@@ -160,7 +160,7 @@
         <s:button view="/UserEdit.xhtml"
                     id="create"
            propagation="none"
-                 value="Create user">
+                 value="新建用户">
             <f:param name="userId"/>
         </s:button>
     </s:div>
