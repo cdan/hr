@@ -11,7 +11,7 @@
 	<ui:define name="body">
 
 		<rich:panel>
-			<f:facet name="header">入职时间大于5个月小于6个月，一个月内转正的人员列表 (#{empty newhirealertList.resultList ? 0 : (newhirealertList.paginated ? newhirealertList.resultCount : newhirealertList.resultList.size)})</f:facet>
+			<f:facet name="header">一个月内转正的人员列表 (#{empty newhirealertList.resultList ? 0 : (newhirealertList.paginated ? newhirealertList.resultCount : newhirealertList.resultList.size)})</f:facet>
 			<div class="results" id="newhirealertList"><h:outputText
 				value="The staffs search returned no results."
 				rendered="#{empty newhirealertList.resultList}" /> <rich:dataTable
@@ -52,11 +52,11 @@
 					<f:facet name="header">
 						<ui:include src="../layout/sort.xhtml">
 							<ui:param name="entityList" value="#{newhirealertList}" />
-							<ui:param name="propertyLabel" value="入职日期" />
-							<ui:param name="propertyPath" value="staffs.startDate" />
+							<ui:param name="propertyLabel" value="转正时间" />
+							<ui:param name="propertyPath" value="staffs.zhuanzhengdate" />
 						</ui:include>
 					</f:facet>
-					<h:outputText value="#{_staffs.startDate}">
+					<h:outputText value="#{_staffs.zhuanzhengdate}">
 						<s:convertDateTime type="both" pattern="yyyy-MM-dd" />
 					</h:outputText>
 				</h:column>
