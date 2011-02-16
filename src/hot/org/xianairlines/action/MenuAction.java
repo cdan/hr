@@ -64,6 +64,13 @@ public class MenuAction {
 			subMenu.setText("用户管理");
 			subMenu.setUrl("UserList.seam");
 			menu.addChildren(subMenu);
+
+            subMenu = new Menus();
+			subMenu.setId(10l);
+			subMenu.setLeaf(true);
+			subMenu.setText("修改密码");
+			subMenu.setUrl("password.seam");
+			menu.addChildren(subMenu);
 			
 		menu = new Menus();
 		menu.setId(6l);

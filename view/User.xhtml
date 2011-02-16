@@ -23,10 +23,10 @@
             <h:outputText value="#{userHome.instance.name}"/>
         </s:decorate>
 
-        <s:decorate id="password" template="layout/display.xhtml">
+        <!--s:decorate id="password" template="layout/display.xhtml">
             <ui:define name="label">密码</ui:define>
             <h:outputText value="#{userHome.instance.password}"/>
-        </s:decorate>
+        </s:decorate-->
 
         <s:decorate id="role" template="layout/display.xhtml">
             <ui:define name="label">权限</ui:define>
@@ -41,7 +41,8 @@
 
         <s:button view="/UserEdit.xhtml"
                     id="edit"
-                 value="Edit"/>
+                 value="Edit"> <f:param name="resetpassword"
+                        value="true"/></s:button>
 
         <s:button view="/#{empty userFrom ? 'UserList' : userFrom}.xhtml"
                     id="done"

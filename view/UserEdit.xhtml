@@ -73,7 +73,7 @@
                 </h:inputText>
             </s:decorate>-->
             
-            <s:decorate id="roleField"
+            <s:decorate id="roleField" rendered="#{param.resetpassword}"
 				template="layout/edit.xhtml">
 				<ui:define name="label">角色</ui:define>
 				<h:selectOneMenu id="roleField"
@@ -110,7 +110,7 @@
                           value="删除"
                          action="#{userHome.remove}"
                       immediate="true"
-                       rendered="#{userHome.managed}"/>
+                       rendered="#{userHome.managed &amp;&amp; (param.resetpassword==null)}"/>
 
             <s:button id="cancelEdit"
                    value="取消"

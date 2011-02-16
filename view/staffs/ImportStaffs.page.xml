@@ -17,5 +17,5 @@
          </redirect>
       </rule>
    </navigation>
- <restrict>#{s:hasRole('admin')}</restrict>
+ <!--restrict>#{s:hasRole('admin')}</restrict-->
 </page>

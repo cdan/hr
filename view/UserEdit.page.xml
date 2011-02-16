@@ -11,6 +11,7 @@
 
    <param name="userFrom"/>
    <param name="userId" value="#{userHome.userId}"/>
+    <param name="resetpassword" value="#{resetpassword}"/>
 
 
    <navigation from-action="#{userHome.persist}">

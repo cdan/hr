@@ -114,6 +114,8 @@
                 rendered="#{empty from}">
                 <f:param name="userId"
                         value="#{_user.id}"/>
+                                <f:param name="resetpassword"
+                        value="true"/>
             </s:link>
         </rich:column>
     </rich:dataTable>
@@ -162,6 +164,8 @@
            propagation="none"
                  value="新建用户">
             <f:param name="userId"/>
+             <f:param name="resetpassword"
+                        value="true"/>
         </s:button>
     </s:div>
 
