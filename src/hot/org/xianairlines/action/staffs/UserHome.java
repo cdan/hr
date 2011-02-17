@@ -14,6 +14,9 @@ public class UserHome extends EntityHome<User> {
     //@In @Out
     User user;
 
+
+    private String resetpassword;
+
     public void setUserId(Integer id) {
 		setId(id);
 	}
@@ -125,4 +128,12 @@ public class UserHome extends EntityHome<User> {
         return ok;
     }
 
+
+    public String getResetpassword() {
+        return resetpassword;
+    }
+
+    public void setResetpassword(String resetpassword) {
+        this.resetpassword = resetpassword;
+    }
 }
