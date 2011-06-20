@@ -72,17 +72,17 @@
 						</s:decorate></td>
 					</tr>
 					<tr>
-						<td><s:decorate id="workDateField"
-							template="../layout/display.xhtml">
-							<ui:define name="label">参 加 工 作时  间</ui:define>
-							<h:outputText id="workDate" value="#{staffsHome.staff.workDate}">
-							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
-							</h:outputText>
-						</s:decorate></td>
 						<td><s:decorate id="educationBackgroundField"
 							template="../layout/display.xhtml">
 							<ui:define name="label">学历</ui:define>
 							<h:outputText id="educationBackground" value="#{staffsHome.staff.educationBackground}"/>
+						</s:decorate></td>
+                        <td><s:decorate id="eduDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">获得学历时间</ui:define>
+							<h:outputText id="eduDate" value="#{staffsHome.staff.eduDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM"/>
+							</h:outputText>
 						</s:decorate></td>
 					</tr>
 					<tr>
@@ -90,6 +90,23 @@
 							template="../layout/display.xhtml">
 							<ui:define name="label">学位</ui:define>
 							<h:outputText id="degree" value="#{staffsHome.staff.degree}"/>
+						</s:decorate></td>
+                        <td><s:decorate id="degreeDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">获得学位时间</ui:define>
+							<h:outputText id="degreeDate" value="#{staffsHome.staff.degreeDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM"/>
+							</h:outputText>
+						</s:decorate></td>
+					</tr>
+
+                    <tr>
+						<td><s:decorate id="workDateField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">参 加 工 作时  间</ui:define>
+							<h:outputText id="workDate" value="#{staffsHome.staff.workDate}">
+							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
+							</h:outputText>
 						</s:decorate></td>
 						<td><s:decorate id="graduateSchoolField"
 							template="../layout/display.xhtml">
@@ -447,7 +464,7 @@
 		</rich:panel>
 			<div class="actionButtons">
 				 <s:button view="/staffs/StaffsList.xhtml"  value="返回"></s:button>
-				 
+
 				 <s:button action="#{staffsHome.export}" value="导出">
 				    <f:param name="staffsId" value="#{staffsHome.staffsId}"/>
 				 </s:button>

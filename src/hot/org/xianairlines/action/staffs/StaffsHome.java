@@ -7,6 +7,7 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.framework.EntityHome;
 import org.xianairlines.model.*;
 
 import javax.faces.context.ExternalContext;
@@ -25,7 +26,7 @@ import java.util.*;
 
 @Name("staffsHome")
 @Scope(ScopeType.CONVERSATION)
-public class StaffsHome {
+public class StaffsHome extends EntityHome<Staffs> {
 	@Out(required = false)
 	private Staffs staff;
 
@@ -133,6 +134,12 @@ public class StaffsHome {
 //		entityManager.persist(spouse);
 		entityManager.flush();
 		return "next";
+	}
+
+    public String remove() {
+		entityManager.remove(staff);
+		entityManager.flush();
+		return "removed";
 	}
 
 	public void export() throws UnsupportedEncodingException {

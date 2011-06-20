@@ -3,7 +3,6 @@ html {
 }
 
 body {
-	font-size: 12px;
 	margin: 0px;
 }
 
@@ -17,7 +16,7 @@ h1 {
 }
 
 input[type=submit], input[type=button] {
-	font-size: 11px;
+	font-size: 12px;
 	margin: 5px 5px 5px 0;
 	cursor: pointer;
 }
@@ -27,7 +26,7 @@ input[type=text], input[type=password], textarea {
 }
 
 select {
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .tableControl, .actionButtons {
@@ -54,6 +53,7 @@ select {
 
 .body {
 	padding: 5px;
+	font-size: 13px;
 }
 .message {
 	padding: 5px;
@@ -122,15 +122,25 @@ img.errors {
 	padding-left: 2px;
 }
 
+
 .rich-stglpanel-body {
 	overflow: auto;
-} 
+	font-size: 12px;
+}
+.rich-table-cell {
+    font-size: 12px;
+}
+.rich-panel-body {
+	overflow: auto;
+	font-size: 12px;
+}
 
 /* the specificity here is necessary to override the defaults */
 /*
 .rich-panel .rich-panel-header,
 .rich-stglpanel .rich-stglpanel-header {
 	padding: 2px 3px;
+
 }*/
 
 .rich-panel input[type=submit], .rich-panel input[type=button],
@@ -169,6 +179,7 @@ img.errors {
 .rich-toolbar-item .rich-menu-item a:hover {
 	text-decoration: none;
 }
+
 
 .rich-datalist {
 	list-style: square;

@@ -43,9 +43,14 @@ public class Staffs implements Serializable {
 	@Column(name = "staffs_work_date" )
 	private Date workDate;
 
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "staffs_edu_date" )
+	private Date eduDate;
 	@Column(name = "staffs_education_background", length = 100 )
 	private String educationBackground;
-
+    @Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "staffs_degree_date" )
+	private Date degreeDate;
 	@Column(name = "staffs_degree", length = 100 )
 	private String degree;
 
@@ -650,5 +655,21 @@ public class Staffs implements Serializable {
 
     public void setDingjijibie(String dingjijibie) {
         this.dingjijibie = dingjijibie;
+    }
+
+    public Date getEduDate() {
+        return eduDate;
+    }
+
+    public void setEduDate(Date eduDate) {
+        this.eduDate = eduDate;
+    }
+
+    public Date getDegreeDate() {
+        return degreeDate;
+    }
+
+    public void setDegreeDate(Date degreeDate) {
+        this.degreeDate = degreeDate;
     }
 }

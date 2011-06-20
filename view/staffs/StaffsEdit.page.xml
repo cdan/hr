@@ -30,7 +30,7 @@
    <navigation from-action="#{staffsHome.remove}">
       <rule if-outcome="removed">
          <end-conversation/>
-         <redirect view-id="/StaffsList.xhtml"/>
+         <redirect view-id="/staffs/StaffsList.xhtml"/>
       </rule>
    </navigation>
 

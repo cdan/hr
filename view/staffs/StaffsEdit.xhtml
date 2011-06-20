@@ -48,7 +48,7 @@
 							<ui:define name="label">出生日期</ui:define>
 							<rich:calendar locale="zh_CN" id="birthdate"
 								value="#{staffsHome.staff.birthdate}"
-								datePattern="yyyy-MM-dd" />
+								datePattern="yyyy-MM" />
 						</s:decorate></td>
 						<td><s:decorate id="nativePlaceField"
 							template="../layout/edit.xhtml">
@@ -104,13 +104,6 @@
 						</s:decorate></td>
 					</tr>
 					<tr>
-						<td><s:decorate id="workDateField"
-							template="../layout/edit.xhtml">
-							<ui:define name="label">参 加 工 作时  间</ui:define>
-							<rich:calendar locale="zh_CN" id="workDate"
-								value="#{staffsHome.staff.workDate}"
-								datePattern="yyyy-MM-dd" />
-						</s:decorate></td>
 						<td><s:decorate id="educationBackgroundField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">学历</ui:define>
@@ -122,6 +115,13 @@
 									bypassUpdates="true" ajaxSingle="true" />
 							</h:selectOneMenu>
 						</s:decorate></td>
+                        <td><s:decorate id="eduDateField"
+                            template="../layout/edit.xhtml">
+                            <ui:define name="label">获得学历时间</ui:define>
+                            <rich:calendar locale="zh_CN" id="eduDate"
+                                value="#{staffsHome.staff.eduDate}"
+                                datePattern="yyyy-MM" />
+                        </s:decorate></td>
 					</tr>
 					<tr>
 						<td><s:decorate id="degreeField"
@@ -135,7 +135,25 @@
 									bypassUpdates="true" ajaxSingle="true" />
 							</h:selectOneMenu>
 						</s:decorate></td>
-						<td><s:decorate id="graduateSchoolField"
+                        <td><s:decorate id="degreeDateField"
+                            template="../layout/edit.xhtml">
+                            <ui:define name="label">获得学位时间</ui:define>
+                            <rich:calendar locale="zh_CN" id="degreeDate"
+                                value="#{staffsHome.staff.degreeDate}"
+                                datePattern="yyyy-MM" />
+                        </s:decorate></td>
+					</tr>
+
+
+                    <tr>
+                        <td><s:decorate id="workDateField"
+                                template="../layout/edit.xhtml">
+                                <ui:define name="label">参加工作时间</ui:define>
+                                <rich:calendar locale="zh_CN" id="workDate"
+                                    value="#{staffsHome.staff.workDate}"
+                                    datePattern="yyyy-MM-dd" />
+                        </s:decorate></td>
+                        <td><s:decorate id="graduateSchoolField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">毕 业 院 校</ui:define>
 							<h:inputText id="graduateSchool"   size="30"
@@ -145,6 +163,8 @@
 							</h:inputText>
 						</s:decorate></td>
 					</tr>
+
+
 
 					<tr>
 						<td><s:decorate id="professionalTitleField"
@@ -417,7 +437,7 @@
 							<ui:define name="label">出生日期</ui:define>
 							<rich:calendar locale="zh_CN" id="birthdate"
 								value="#{staffsHome.staff.spouseBirthdate}"
-								datePattern="yyyy-MM-dd" />
+								datePattern="yyyy-MM" />
 						</s:decorate></td>
 					</tr>
 					<tr>
@@ -484,6 +504,10 @@
 				value="保存" action="#{staffsHome.persist}" />
 				<h:commandButton id="saveAndNext"
 				value="保存并下一步" action="#{staffsHome.persistAndNext}" />
+               <h:commandButton id="delete"
+                          value="删除"
+                         action="#{staffsHome.remove}"
+                      immediate="true"/>
 				 <s:button view="/staffs/StaffsList.xhtml" propagation="end" value="返回"></s:button></div>
 		</h:form>
 	</ui:define>
