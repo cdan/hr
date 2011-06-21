@@ -184,6 +184,7 @@ public class StaffsList extends EntityQuery<Staffs> {
 				+ newFileName + ";charset=UTF-8");
 		Map<String, Object> beans = new HashMap<String, Object>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        SimpleDateFormat dateFormatM = new SimpleDateFormat("yyyy.MM");
         List a = new ArrayList();
         for(int i=0;i<this.getResultList().size();i++) {
             a.add(i+1);
@@ -192,6 +193,7 @@ public class StaffsList extends EntityQuery<Staffs> {
         beans.put("seq", a);
 		beans.put("staffs", this.getResultList());
 		beans.put("dateFormat", dateFormat);
+        beans.put("dateFormatM", dateFormatM) ;
         beans.put("ageCounter", ac);
 		InputStream in = null;
 		Workbook workBook = null;
