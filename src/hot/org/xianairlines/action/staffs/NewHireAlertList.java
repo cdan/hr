@@ -22,8 +22,8 @@ public class NewHireAlertList extends EntityQuery<Staffs> {
 
 	private static final String[] RESTRICTIONS = {
 			//"staffs.startDate >= #{currentDatetime}",
-			"staffs.startDate <= #{currentDatetime}",};
-	
+    "staffs.startDate <= #{currentDatetime}",};
+
 	@In
 	private EntityManager entityManager;
 	
@@ -34,8 +34,9 @@ public class NewHireAlertList extends EntityQuery<Staffs> {
 		onemonth.add(Calendar.MONTH, +1);
 		
 		List<Object[]> result =
-		      entityManager.createQuery("select staffs from Staffs staffs where staffs.zhuanzhengdate <= :onemonth")
+		      entityManager.createQuery("select staffs from Staffs staffs where staffs.zhuanzhengdate <= :onemonth and staffs.zhuanzhengdate >= :now")
 		      .setParameter("onemonth", onemonth.getTime())
+              .setParameter("now", Calendar.getInstance().getTime())
 		      .getResultList();		
 		return result;
 	}

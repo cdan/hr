@@ -51,6 +51,13 @@ public class MenuAction {
 			subMenu.setText("合同到期提醒");
 			subMenu.setUrl("staffs/ContractExpireAlertList.seam");
 			menu.addChildren(subMenu);
+
+            subMenu = new Menus();
+			subMenu.setId(11l);
+			subMenu.setLeaf(true);
+			subMenu.setText("退休提醒");
+			subMenu.setUrl("staffs/RetireAlertList.seam");
+			menu.addChildren(subMenu);
 			
 		menu = new Menus();
 		menu.setId(4l);

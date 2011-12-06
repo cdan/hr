@@ -1,11 +1,15 @@
 package org.xianairlines.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.xianairlines.action.staffs.AuditedEntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "edu_experience")
+@EntityListeners(AuditedEntityListener.class)
 public class EduExperience implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -72,6 +76,7 @@ public class EduExperience implements Serializable{
 	public void setEducationBackground(String educationBackground) {
 		this.educationBackground = educationBackground;
 	}
+    @JsonIgnore
 	public Staffs getStaffs() {
 		return staffs;
 	}

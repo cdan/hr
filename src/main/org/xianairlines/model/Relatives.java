@@ -1,9 +1,13 @@
 package org.xianairlines.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.xianairlines.action.staffs.AuditedEntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 @Entity
+@EntityListeners(AuditedEntityListener.class)
 @Table(name = "relatives")
 public class Relatives implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -68,6 +72,7 @@ public class Relatives implements Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+    @JsonIgnore
 	public Staffs getStaffs() {
 		return staffs;
 	}

@@ -394,27 +394,28 @@
 								value="#{staffsHome.staff.startDate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
-						<td><s:decorate id="othersField"
-							template="../layout/edit.xhtml">
-							<ui:define name="label">其他信息</ui:define>
-							<h:inputText id="othersField" size="30"
-								maxlength="100" value="#{staffsHome.staff.others}">
-								<a:support event="onblur" reRender="othersField"
-									bypassUpdates="true" ajaxSingle="true" />
-							</h:inputText>
-						</s:decorate></td>
-					</tr>
-
-                	<tr>
-						<td><s:decorate id="guanweihuidateField"
+                        <td><s:decorate id="guanweihuidateField"
 							template="../layout/edit.xhtml">
 							<ui:define name="label">到管委会时间</ui:define>
 							<rich:calendar locale="zh_CN" id="guanweihuidate"
 								value="#{staffsHome.staff.guanweihuidate}"
 								datePattern="yyyy-MM-dd" />
 						</s:decorate></td>
-						<td></td>
+
 					</tr>
+
+                	<tr>
+                        <td><s:decorate id="othersField"
+							template="../layout/edit.xhtml">
+							<ui:define name="label">其他信息</ui:define>
+                            <h:inputTextarea id="othersField" value="#{staffsHome.staff.others}">
+								<a:support event="onblur" reRender="othersField"
+									bypassUpdates="true" ajaxSingle="true" />
+                            </h:inputTextarea>
+						</s:decorate></td>
+                        <td></td>
+					</tr>
+
 
 				</table>
 				<div style="clear: both"></div>

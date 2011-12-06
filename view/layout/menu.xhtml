@@ -10,9 +10,10 @@
     xmlns:rich="http://richfaces.org/rich"
     template="template.xhtml">
     <ui:define name="body">
-        <img src="/xcaib/img/xcaib.jpg" width="90%" height="80" />
-<h:outputText id="menuWelcomeId" value="欢迎您: #{credentials.username}" rendered="#{identity.loggedIn}"/>
+        <center><img src="/xcaib/img/xcaib.jpg" width="800" height="100" />
+        <h:outputText id="menuWelcomeId" value="欢迎您: #{credentials.username}" rendered="#{identity.loggedIn}"/>
         <s:link id="menuLoginId" view="/login.xhtml" value="登录" rendered="#{not identity.loggedIn}" propagation="none" target="_top"/>
         <s:link id="menuLogoutId" view="/home.xhtml" action="#{identity.logout}" value="注销" rendered="#{identity.loggedIn}" propagation="none" target="_top"/>
+        </center>
     </ui:define>
 </ui:composition>

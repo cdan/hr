@@ -33,7 +33,7 @@ Ext.ux.Workbench.prototype = {
             region: 'north',
             //height: isDemoMode ? 0 : 40,
             //autoHeight: true,
-            height: 98,
+            height: 118,
             margins: '0 0 0 0',
             html:html,
             split: false,

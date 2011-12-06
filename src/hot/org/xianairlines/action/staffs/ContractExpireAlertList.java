@@ -34,8 +34,9 @@ public class ContractExpireAlertList extends EntityQuery<Staffs> {
 		sixmonth.add(Calendar.MONTH, +6);
 
 		List<Object[]> result =
-		      entityManager.createQuery("select staffs from Staffs staffs where staffs.contactExpireDate <= :sixmonth")
+		      entityManager.createQuery("select staffs from Staffs staffs where staffs.contactExpireDate <= :sixmonth and staffs.contactExpireDate >= :now")
 		      .setParameter("sixmonth", sixmonth.getTime())
+              .setParameter("now", Calendar.getInstance().getTime())
 		      .getResultList();
 		return result;
 	}

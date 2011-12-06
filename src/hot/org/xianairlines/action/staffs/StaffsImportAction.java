@@ -129,6 +129,7 @@ public class StaffsImportAction {
 
             eduExperience.setEducationBackground(row.getCell(7).getStringCellValue());
 
+
             eduList.add(eduExperience);
             }
         }

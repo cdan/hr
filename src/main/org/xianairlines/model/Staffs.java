@@ -1,10 +1,15 @@
 package org.xianairlines.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.xianairlines.action.staffs.AuditedEntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
+
 @Entity
+@EntityListeners(AuditedEntityListener.class)
 @Table(name = "staffs")
 public class Staffs implements Serializable {
 
@@ -72,7 +77,7 @@ public class Staffs implements Serializable {
 	@Column(name = "staffs_contact_expire_date" )
 	private Date contactExpireDate;
 	
-	@Column(name = "staffs_others", length = 100)
+	@Column(name = "staffs_others")
 	private String others;
 
 	@Column(name = "staffs_specialty", length = 100 )
@@ -124,6 +129,9 @@ public class Staffs implements Serializable {
     @JoinColumn(name = "staffs_id" )
     @org.hibernate.annotations.BatchSize(size = 10)
 	private Set<Spouse> spouses = new HashSet<Spouse>();
+
+    @Column(name = "staffs_desc")
+    private String desc;
 	
 	public Staffs(){
 	}
@@ -176,6 +184,7 @@ public class Staffs implements Serializable {
         this.spouseWorkName =   spouseWorkName;
         this.spouseTel =   spouseTel;
         this.spouseWorkUnit =   spouseWorkUnit;
+        this.desc = desc;
 	}
 
 	public Long getId() {
@@ -362,6 +371,7 @@ public class Staffs implements Serializable {
 		this.email = email;
 	}
 
+    @JsonIgnore
 	public List<WorkExperience> getWorkExperiences() {
 		return workExperiences;
 	}
@@ -370,6 +380,7 @@ public class Staffs implements Serializable {
 		this.workExperiences = workExperiences;
 	}
 
+    @JsonIgnore
 	public List<Relatives> getRelatives() {
 		return relatives;
 	}
@@ -378,6 +389,7 @@ public class Staffs implements Serializable {
 		this.relatives = relatives;
 	}
 
+    @JsonIgnore
 	public List<EduExperience> getEduExperiences() {
 		return eduExperiences;
 	}
@@ -386,6 +398,7 @@ public class Staffs implements Serializable {
 		this.eduExperiences = eduExperiences;
 	}
 
+    @JsonIgnore
 	public Set<Spouse> getSpouses() {
 		return spouses;
 	}
@@ -671,5 +684,13 @@ public class Staffs implements Serializable {
 
     public void setDegreeDate(Date degreeDate) {
         this.degreeDate = degreeDate;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

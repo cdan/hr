@@ -10,6 +10,7 @@ import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.security.Admin;
+import org.jboss.seam.contexts.Contexts;
 import org.jboss.seam.log.Log;
 import org.jboss.seam.security.Credentials;
 import org.jboss.seam.security.Identity;
@@ -34,6 +35,7 @@ public class AuthenticatorBean implements Authenticator
         try {
             currentUser = (User)entityManager.createQuery("select u from User u where u.name = #{identity.username} and u.password = #{identity.password}").getSingleResult();
             identity.addRole(currentUser.getRole());
+            Contexts.getSessionContext().set("operator", currentUser.getName());
         } catch (PersistenceException e) {
         	e.printStackTrace();
             return false;

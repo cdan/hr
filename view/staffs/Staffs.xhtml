@@ -270,20 +270,24 @@
 							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
 							</h:outputText>
 						</s:decorate></td>
-						<td><s:decorate id="othersField"
-							template="../layout/display.xhtml">
-							<ui:define name="label">其他信息</ui:define>
-							<h:outputText id="others" value="#{staffsHome.staff.others}"/>
-						</s:decorate></td>
-					</tr>
-
-                	<tr>
-						<td><s:decorate id="guanweihuidateField"
+                        <td><s:decorate id="guanweihuidateField"
 							template="../layout/display.xhtml">
 							<ui:define name="label">到管委会时间</ui:define>
 							<h:outputText value="#{staffsHome.staff.guanweihuidate}">
 							<s:convertDateTime type="both" pattern="yyyy-MM-dd"/>
 							</h:outputText>
+						</s:decorate></td>
+					</tr>
+
+                	<tr>
+                        <td width="45%"><s:decorate id="othersField"
+							template="../layout/display.xhtml">
+							<ui:define name="label">其他信息</ui:define>
+                            <h:inputTextarea id="othersField" value="#{staffsHome.staff.others}">
+								<a:support event="onblur" reRender="othersField"
+									bypassUpdates="true" ajaxSingle="true" />
+                            </h:inputTextarea>
+							<!--h:outputText id="others" value="#{staffsHome.staff.others}"/-->
 						</s:decorate></td>
 						<td></td>
 					</tr>

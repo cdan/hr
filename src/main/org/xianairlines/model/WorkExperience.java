@@ -1,10 +1,14 @@
 package org.xianairlines.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.xianairlines.action.staffs.AuditedEntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@EntityListeners(AuditedEntityListener.class)
 @Table(name = "work_experience")
 public class WorkExperience implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -83,6 +87,7 @@ public class WorkExperience implements Serializable {
 		this.workName = workName;
 	}
 
+    @JsonIgnore
 	public Staffs getStaffs() {
 		return staffs;
 	}
